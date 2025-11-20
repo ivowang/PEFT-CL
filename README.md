@@ -1,4 +1,4 @@
-# 📋 TODO List
+# TODO List
 ## Prompt Series
 - [x] L2P
 - [x] DualPrompt
@@ -16,15 +16,14 @@
 - [ ] BI-LORA
 - [ ] O-LoRA
 ## Adapter Tuning
+- [x] MoE-Adapters4CL
+- [x] SEED
+- [ ] CoSCL
+- [ ] CN-DPM
 - [ ] CPT
 - [ ] AdatperCL
 - [ ] Adaptive Compositional Model
 - [ ] ADA
 - [ ] HAM
-- [ ] CN-DPM
-- [ ] CoSCL
-- [ ] SEED
-- [x] MoE-Adapters4CL
-
 ## Others
 - [x] Full Params Fine-tuning

@@ -54,6 +54,8 @@ def get_model(model_name, args):
         from models.inflora import Learner
     elif name == "moe_adapters":
         from models.moe_adapters import Learner
+    elif name == "seed":
+        from models.seed import Learner
     else:
         assert 0
     return Learner(args)
