@@ -3,7 +3,7 @@
 - [x] L2P
 - [x] DualPrompt
 - [x] CODA-Prompt
-- [ ] HiDe-Prompt
+- [x] HiDe-Prompt
 - [ ] C-PT
 - [ ] LFPT5
 - [ ] Episodic Memory Prompts
@@ -18,7 +18,7 @@
 ## Adapter Tuning
 - [x] MoE-Adapters4CL
 - [x] SEED
-- [ ] CoSCL
+- [x] CoSCL
 - [ ] CN-DPM
 - [ ] CPT
 - [ ] AdatperCL

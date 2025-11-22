@@ -139,6 +139,40 @@ def get_backbone(args, pretrained=False):
             return model
         else:
             raise NotImplementedError("Inconsistent model name and model type")
+    # hideprompt
+    elif '_hideprompt' in name:
+        if args["model_name"] == "hideprompt":
+            from backbone import vit_hideprompt
+            model = timm.create_model(
+                args["backbone_type"],
+                pretrained=args["pretrained"],
+                num_classes=args["nb_classes"],
+                drop_rate=args.get("drop", 0.0),
+                drop_path_rate=args.get("drop_path", 0.0),
+                drop_block_rate=None,
+                prompt_length=args.get("length", 20),
+                embedding_key=args.get("embedding_key", "cls"),
+                prompt_init=args.get("prompt_key_init", "uniform"),
+                prompt_pool=args.get("prompt_pool", True),
+                prompt_key=args.get("prompt_key", False),
+                pool_size=args.get("size", 10),
+                top_k=args.get("top_k", 1),
+                batchwise_prompt=args.get("batchwise_prompt", False),
+                prompt_key_init=args.get("prompt_key_init", "uniform"),
+                head_type=args.get("head_type", "token"),
+                use_prompt_mask=args.get("use_prompt_mask", True),
+                use_g_prompt=args.get("use_g_prompt", False),
+                g_prompt_length=args.get("g_prompt_length", 5),
+                g_prompt_layer_idx=args.get("g_prompt_layer_idx", []),
+                use_prefix_tune_for_g_prompt=args.get("use_prefix_tune_for_g_prompt", False),
+                use_e_prompt=args.get("use_e_prompt", True),
+                e_prompt_layer_idx=args.get("e_prompt_layer_idx", [0, 1, 2, 3, 4]),
+                use_prefix_tune_for_e_prompt=args.get("use_prefix_tune_for_e_prompt", True),
+                same_key_value=args.get("same_key_value", False),
+            )
+            return model
+        else:
+            raise NotImplementedError("Inconsistent model name and model type")
     # dualprompt
     elif '_dualprompt' in name:
         if args["model_name"] == "dualprompt":
@@ -664,6 +698,41 @@ class SimpleVitNet(BaseNet):
         out = self.fc(x)
         out.update({"features": x})
         return out
+
+# hideprompt
+class HiDePromptVitNet(nn.Module):
+    def __init__(self, args, pretrained):
+        super(HiDePromptVitNet, self).__init__()
+        self.backbone = get_backbone(args, pretrained)
+        if args.get("get_original_backbone", True):
+            self.original_backbone = self.get_original_backbone(args)
+        else:
+            self.original_backbone = None
+        self.args = args
+            
+    def get_original_backbone(self, args):
+        original_model_name = args.get("original_model", args["backbone_type"])
+        return timm.create_model(
+            original_model_name,
+            pretrained=args["pretrained"],
+            num_classes=args["nb_classes"],
+            drop_rate=args.get("drop", 0.0),
+            drop_path_rate=args.get("drop_path", 0.0),
+            drop_block_rate=None,
+        ).eval()
+
+    def forward(self, x, task_id=-1, prompt_id=None, train=False, prompt_momentum=0.0):
+        with torch.no_grad():
+            if self.original_backbone is not None:
+                original_output = self.original_backbone(x)
+                # For HiDe-Prompt, we need logits from original model to infer task_id
+                # prompt_id is computed outside and passed in
+                pass
+            else:
+                original_output = None
+
+        output = self.backbone(x, task_id=task_id, prompt_id=prompt_id, train=train, prompt_momentum=prompt_momentum)
+        return output
 
 # l2p and dualprompt
 class PromptVitNet(nn.Module):

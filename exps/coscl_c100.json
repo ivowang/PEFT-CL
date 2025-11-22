@@ -1,0 +1,26 @@
+{
+    "prefix": "reproduce",
+    "dataset": "cifar100",
+    "memory_size": 0,
+    "memory_per_class": 0,
+    "fixed_memory": false,
+    "shuffle": true,
+    "init_cls": 10,
+    "increment": 10,
+    "model_name": "coscl",
+    "backbone_type": "coscl_net",
+    "device": ["0"],
+    "seed": [0],
+    "batch_size": 256,
+    "num_workers": 4,
+    "coscl_lamb": 10000.0,
+    "coscl_lamb1": 0.02,
+    "coscl_s_gate": 100.0,
+    "coscl_use_TG": false,
+    "coscl_nepochs": 100,
+    "coscl_lr": 0.001,
+    "coscl_lr_min": 1e-6,
+    "coscl_lr_factor": 3,
+    "coscl_lr_patience": 5
+}
+

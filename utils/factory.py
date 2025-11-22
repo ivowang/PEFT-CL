@@ -56,6 +56,10 @@ def get_model(model_name, args):
         from models.moe_adapters import Learner
     elif name == "seed":
         from models.seed import Learner
+    elif name == "hideprompt":
+        from models.hideprompt import Learner
+    elif name == "coscl":
+        from models.coscl import Learner
     else:
         assert 0
     return Learner(args)
