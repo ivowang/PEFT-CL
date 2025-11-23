@@ -48,28 +48,6 @@ PEFT-CL is a unified framework for implementing and evaluating various Parameter
 - **Reproducible Results**: Built-in seed management and logging for reproducible experiments
 - **Extensible Design**: Easy to add new PEFT methods following the framework structure
 
-## Supported Methods
-
-### Prompt-based Methods
-- ✅ **L2P** (Learn to Prompt)
-- ✅ **DualPrompt**
-- ✅ **CODA-Prompt**
-- ✅ **HiDe-Prompt**
-- ✅ **C-PT** (Continual Prompt Tuning)
-- ✅ **LFPT5** (Lifelong Few-shot Prompt Tuning)
-
-### LoRA-based Methods
-- ✅ **InfLoRA** (Infinite LoRA)
-- ✅ **SD-LoRA** (Sparse and Dense LoRA)
-
-### Adapter-based Methods
-- ✅ **MoE-Adapters4CL** (Mixture of Experts Adapters for Continual Learning)
-- ✅ **SEED** (Selective Experience Replay for Efficient Domain Adaptation)
-- ✅ **CoSCL** (Continual Learning with Compositional Sparsity)
-
-### Baseline Methods
-- ✅ **Full Parameter Fine-tuning**
-
 ## Installation
 
 ### Requirements
