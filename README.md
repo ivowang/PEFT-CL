@@ -211,15 +211,3 @@ If you use this framework in your research, please cite:
   license={MIT}
 }
 ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Acknowledgments
-
-This framework integrates implementations and ideas from various PEFT and Continual Learning papers. We thank all the original authors for their contributions.
