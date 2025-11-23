@@ -1,0 +1,40 @@
+{
+    "prefix": "reproduce",
+    "dataset": "cifar224",
+    "memory_size": 0,
+    "memory_per_class": 0,
+    "fixed_memory": false,
+    "shuffle": true,
+    "init_cls": 10,
+    "increment": 10,
+    "model_name": "lfpt5",
+    "backbone_type": "vit_base_patch16_224_lfpt5",
+    "get_original_backbone": true,
+    "device": ["0"],
+    "seed": [0],
+    
+    "tuned_epoch": 10,
+    "init_lr": 0.001,
+    "batch_size": 16,
+    "weight_decay": 0.0,
+    "min_lr": 1e-5,
+    "optimizer": "adam",
+    "scheduler": "constant",
+    "reinit_optimizer": true,
+
+    "global_pool": "token",
+    "head_type": "prompt",
+    "freeze": ["blocks", "patch_embed", "cls_token", "norm", "pos_embed"],
+
+    "pretrained": true,
+    "drop": 0.0,
+    "drop_path": 0.0,
+
+    "length": 5,
+    "prompt_key_init": "uniform",
+    
+    "lfpt5_use_kd": true,
+    "lfpt5_kd_lambda": 0.5,
+    "mask_old_classes": false
+}
+

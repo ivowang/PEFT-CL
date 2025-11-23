@@ -60,6 +60,10 @@ def get_model(model_name, args):
         from models.hideprompt import Learner
     elif name == "coscl":
         from models.coscl import Learner
+    elif name == "cpt":
+        from models.cpt import Learner
+    elif name == "lfpt5":
+        from models.lfpt5 import Learner
     else:
         assert 0
     return Learner(args)

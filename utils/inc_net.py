@@ -10,6 +10,36 @@ import timm
 
 def get_backbone(args, pretrained=False):
     name = args["backbone_type"].lower()
+    model_name = args.get("model_name", "").lower()
+    
+    # Check specialized models first (by model_name) before generic backbone_type checks
+    # CPT
+    if model_name == "cpt":
+        from backbone import vit_cpt
+        # Use the registered CPT model name, not the base backbone_type
+        cpt_model_name = "vit_base_patch16_224_cpt"
+        model = timm.create_model(
+            cpt_model_name,  # Use CPT-specific model name
+            pretrained=args.get("pretrained", True),
+            num_classes=args["nb_classes"],
+            drop_rate=args.get("drop", 0.0),
+            drop_path_rate=args.get("drop_path", 0.0),
+            drop_block_rate=None,
+            prompt_length=args.get("length", 5),
+            embedding_key=args.get("embedding_key", "cls"),
+            prompt_init=args.get("prompt_key_init", "uniform"),
+            prompt_pool=args.get("prompt_pool", True),
+            prompt_key=args.get("prompt_key", True),
+            pool_size=args.get("size", 10),
+            top_k=args.get("top_k", 5),
+            batchwise_prompt=args.get("batchwise_prompt", True),
+            prompt_key_init=args.get("prompt_key_init", "uniform"),
+            head_type=args.get("head_type", "prompt"),
+            use_prompt_mask=args.get("use_prompt_mask", False),
+            num_tasks=args.get("nb_tasks", 10),
+        )
+        return model
+    
     # SimpleCIL or SimpleCIL w/ Finetune
     if name == "pretrained_vit_b16_224" or name == "vit_base_patch16_224":
         if args.get("model_name") == "sdlora":
@@ -29,10 +59,15 @@ def get_backbone(args, pretrained=False):
             )
             model.out_dim = 768
             return model
-
-        model = timm.create_model("vit_base_patch16_224",pretrained=True, num_classes=0)
-        model.out_dim = 768
-        return model.eval()
+        
+        # Skip standard timm model if this is a specialized model (cpt, l2p, etc.)
+        # These models will be handled by their specific branches below
+        if model_name in ["cpt", "l2p", "dualprompt", "lfpt5", "hideprompt"]:
+            pass  # Continue to check specialized model branches
+        else:
+            model = timm.create_model("vit_base_patch16_224",pretrained=True, num_classes=0)
+            model.out_dim = 768
+            return model.eval()
     elif name == "pretrained_vit_b16_224_in21k" or name == "vit_base_patch16_224_in21k":
         model = timm.create_model("vit_base_patch16_224_in21k",pretrained=True, num_classes=0)
         model.out_dim = 768
@@ -135,6 +170,52 @@ def get_backbone(args, pretrained=False):
                 prompt_key_init=args["prompt_key_init"],
                 head_type=args["head_type"],
                 use_prompt_mask=args["use_prompt_mask"],
+            )
+            return model
+        else:
+            raise NotImplementedError("Inconsistent model name and model type")
+    # CPT - also check by backbone_type suffix (for backward compatibility)
+    elif '_cpt' in name:
+        if args.get("model_name", "").lower() == "cpt":
+            from backbone import vit_cpt
+            # Use the registered CPT model name from backbone_type
+            model = timm.create_model(
+                name,  # name already contains '_cpt' suffix
+                pretrained=args.get("pretrained", True),
+                num_classes=args["nb_classes"],
+                drop_rate=args.get("drop", 0.0),
+                drop_path_rate=args.get("drop_path", 0.0),
+                drop_block_rate=None,
+                prompt_length=args.get("length", 5),
+                embedding_key=args.get("embedding_key", "cls"),
+                prompt_init=args.get("prompt_key_init", "uniform"),
+                prompt_pool=args.get("prompt_pool", True),
+                prompt_key=args.get("prompt_key", True),
+                pool_size=args.get("size", 10),
+                top_k=args.get("top_k", 5),
+                batchwise_prompt=args.get("batchwise_prompt", True),
+                prompt_key_init=args.get("prompt_key_init", "uniform"),
+                head_type=args.get("head_type", "prompt"),
+                use_prompt_mask=args.get("use_prompt_mask", False),
+                num_tasks=args.get("nb_tasks", 10),
+            )
+            return model
+        else:
+            raise NotImplementedError("Inconsistent model name and model type")
+    # LFPT5
+    elif '_lfpt5' in name:
+        if args["model_name"] == "lfpt5":
+            from backbone import vit_lfpt5
+            model = timm.create_model(
+                args["backbone_type"],
+                pretrained=args.get("pretrained", True),
+                num_classes=args["nb_classes"],
+                drop_rate=args.get("drop", 0.0),
+                drop_path_rate=args.get("drop_path", 0.0),
+                drop_block_rate=None,
+                prompt_length=args.get("length", 5),
+                prompt_init=args.get("prompt_key_init", "uniform"),
+                head_type=args.get("head_type", "prompt"),
             )
             return model
         else:
@@ -754,14 +835,38 @@ class PromptVitNet(nn.Module):
             drop_block_rate=None,
         ).eval()
 
-    def forward(self, x, task_id=-1, train=False):
+    def forward(self, x, task_id=-1, train=False, use_kd=False):
         with torch.no_grad():
             if self.original_backbone is not None:
-                cls_features = self.original_backbone(x)['pre_logits']
+                original_output = self.original_backbone(x)
+                # Handle different output formats
+                if isinstance(original_output, dict):
+                    cls_features = original_output.get('pre_logits', None)
+                else:
+                    # If output is a tensor, extract features before classifier
+                    # For LFPT5, we don't need cls_features, so set to None
+                    cls_features = None
             else:
                 cls_features = None
 
-        x = self.backbone(x, task_id=task_id, cls_features=cls_features, train=train)
+        # Check which parameters the backbone accepts
+        import inspect
+        backbone_forward = self.backbone.forward
+        sig = inspect.signature(backbone_forward)
+        
+        # Build kwargs based on what the backbone accepts
+        backbone_kwargs = {}
+        if 'task_id' in sig.parameters:
+            backbone_kwargs['task_id'] = task_id
+        if 'cls_features' in sig.parameters:
+            backbone_kwargs['cls_features'] = cls_features
+        if 'train' in sig.parameters:
+            backbone_kwargs['train'] = train
+        if 'use_kd' in sig.parameters:
+            backbone_kwargs['use_kd'] = use_kd
+        
+        # Call backbone with only the parameters it accepts
+        x = self.backbone(x, **backbone_kwargs)
         return x
 
 # coda_prompt

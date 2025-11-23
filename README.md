@@ -4,8 +4,8 @@
 - [x] DualPrompt
 - [x] CODA-Prompt
 - [x] HiDe-Prompt
-- [ ] C-PT
-- [ ] LFPT5
+- [x] C-PT
+- [x] LFPT5
 - [ ] Episodic Memory Prompts
 - [ ] ProgPrompt
 - [ ] LGCL

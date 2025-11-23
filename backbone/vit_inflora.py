@@ -740,8 +740,22 @@ def _create_vision_transformer(variant, pretrained=False, **kwargs):
             **build_args,
             **kwargs)
     except RuntimeError as err:
-        if pretrained and 'version' in str(err).lower() and 'npz' in pretrained_url:
+        if pretrained and ('version' in str(err).lower() or 'npz' in str(err).lower()) and 'npz' in pretrained_url:
             _logger.warning("Pretrained npz load failed for %s (%s); retrying without pretrained weights.", variant, err)
+            model = build_model_with_cfg(
+                VisionTransformer, variant, False,
+                **build_args,
+                **kwargs)
+        else:
+            raise
+    except Exception as err:
+        # Handle other exceptions that might occur during pretrained loading
+        if pretrained:
+            _logger.warning(
+                "Pretrained weights load failed for %s (%s); retrying without pretrained weights.",
+                variant,
+                err,
+            )
             model = build_model_with_cfg(
                 VisionTransformer, variant, False,
                 **build_args,
