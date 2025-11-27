@@ -10,7 +10,7 @@ from tqdm import tqdm
 from torch import optim
 from torch.nn import functional as F
 from torch.utils.data import DataLoader
-from utils.inc_net import PromptVitNet
+from utils.inc_net import CPTVitNet
 from models.base import BaseLearner
 from utils.toolkit import tensor2numpy
 
@@ -22,7 +22,7 @@ class Learner(BaseLearner):
         super().__init__(args)
         
         # Create network with CPT backbone
-        self._network = PromptVitNet(args, True)
+        self._network = CPTVitNet(args, True)
         
         # CPT specific parameters
         self.batch_size = args["batch_size"]
@@ -44,8 +44,10 @@ class Learner(BaseLearner):
         
         # Freeze the parameters for ViT
         if self.args.get("freeze", False):
-            for p in self._network.original_backbone.parameters():
-                p.requires_grad = False
+            original = getattr(self._network, "original_backbone", None)
+            if original is not None:
+                for p in original.parameters():
+                    p.requires_grad = False
             
             # freeze specified parameters
             freeze_list = self.args.get("freeze", [])
@@ -290,8 +292,9 @@ class Learner(BaseLearner):
         prog_bar = tqdm(range(epochs))
         for _, epoch in enumerate(prog_bar):
             self._network.backbone.train()
-            if hasattr(self._network, 'original_backbone'):
-                self._network.original_backbone.eval()
+            original = getattr(self._network, 'original_backbone', None)
+            if original is not None:
+                original.eval()
             
             losses = 0.0
             correct, total = 0, 0

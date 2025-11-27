@@ -20,6 +20,14 @@ import gc
 import torch.nn.utils as utils
 import copy
 
+
+def _torch_load_with_modules(path, *args, **kwargs):
+    """Force pickle-based loading even when torch defaults to weights_only."""
+    try:
+        return torch.load(path, *args, weights_only=False, **kwargs)
+    except TypeError:
+        return torch.load(path, *args, **kwargs)
+
 class _LoRALayer(nn.Module):
     def __init__(self, w: nn.Module, w_a: nn.Module, w_b: nn.Module):
         super().__init__()
@@ -227,7 +235,7 @@ class _LoRA_qkv_timm_eval(nn.Module):
 
 
         file_path = self.save_file+'scaling_factor'+str(self.task_id-1)+'.pt'
-        scaling_param = torch.load(file_path)
+        scaling_param = _torch_load_with_modules(file_path)
         for i in range(self.task_id):
             saved_A_i, saved_B_i = self.saved_A['saved_A_'+str(i)], self.saved_B['saved_B_'+str(i)]
             Q, V = list(enumerate(zip(saved_A_i,saved_B_i)))[self.t_layer_i*2: self.t_layer_i*2+2]
@@ -319,9 +327,9 @@ class LoRA_ViT_timm(nn.Module):
         saved_lora_A, saved_lora_B = {}, {}
         for i in range(self.task_id):
             file_path = self.save_file+'lora_w_a_'+str(i)+'.pt'
-            saved_lora_A['saved_A_'+str(i)] = torch.load(file_path)
+            saved_lora_A['saved_A_'+str(i)] = _torch_load_with_modules(file_path)
             file_path = self.save_file+'lora_w_b_'+str(i)+'.pt'
-            saved_lora_B['saved_B_'+str(i)] = torch.load(file_path)
+            saved_lora_B['saved_B_'+str(i)] = _torch_load_with_modules(file_path)
 
         scaling_factor = nn.Parameter(torch.Tensor([0.8]))
         self.wrapped_param = nn.ModuleList([ParameterWrapper(scaling_factor)])
@@ -364,8 +372,8 @@ class LoRA_ViT_timm(nn.Module):
     def reset_lora_vit_head(self):
         task_incremental = self.increment
         self.lora_vit.head = self.generate_fc(768, (self.task_id)*task_incremental).cuda()
-        temp_weights = torch.load(self.save_file+'CLs_weight'+str(self.task_id-1)+'.pt') 
-        temp_bias = torch.load(self.save_file+'CLs_bias'+str(self.task_id-1)+'.pt') 
+        temp_weights = _torch_load_with_modules(self.save_file+'CLs_weight'+str(self.task_id-1)+'.pt') 
+        temp_bias = _torch_load_with_modules(self.save_file+'CLs_bias'+str(self.task_id-1)+'.pt') 
 
         self.lora_vit.head.weight.data = temp_weights.data.cuda()
         self.lora_vit.head.bias.data = temp_bias.data.cuda()
@@ -388,7 +396,7 @@ class LoRA_ViT_timm(nn.Module):
         if self.task_id ==1:   
             scaling_param = torch.zeros(20,20)
         else:
-            scaling_param = torch.load(filename + 'scaling_factor'+str(self.task_id-2)+'.pt')
+            scaling_param = _torch_load_with_modules(filename + 'scaling_factor'+str(self.task_id-2)+'.pt')
         i = self.task_id-1
         # print('save i', i)
         for j in range(i+1):
@@ -414,9 +422,9 @@ class LoRA_ViT_timm(nn.Module):
         saved_lora_A, saved_lora_B = {}, {}
         for i in range(self.task_id):
             file_path = self.save_file+'lora_w_a_'+str(i)+'.pt'
-            saved_lora_A['saved_A_'+str(i)] = torch.load(file_path)
+            saved_lora_A['saved_A_'+str(i)] = _torch_load_with_modules(file_path)
             file_path = self.save_file+'lora_w_b_'+str(i)+'.pt'
-            saved_lora_B['saved_B_'+str(i)] = torch.load(file_path)
+            saved_lora_B['saved_B_'+str(i)] = _torch_load_with_modules(file_path)
 
         # for param in self.eval_vit.parameters():
         for param in self.lora_vit.parameters():
@@ -435,7 +443,7 @@ class LoRA_ViT_timm(nn.Module):
         for i in range(self.task_id):
             file_path = self.save_file+'lora_w_a_'+str(i)+'.pt'
             if os.path.exists(file_path):
-                w_As = torch.load(file_path)
+                w_As = _torch_load_with_modules(file_path)
                 num_layer = len(self.w_As)
                 for j in range(num_layer):
                     temp = torch.matmul(w_As[j].weight.to(self.w_As[j].weight.device), self.w_As[j].weight.t())

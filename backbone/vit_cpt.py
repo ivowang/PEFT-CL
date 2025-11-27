@@ -3,10 +3,12 @@ Based on L2P implementation but adapted for CPT method
 """
 import math
 import logging
+import os
 import inspect
 from functools import partial
 from collections import OrderedDict
 from typing import Optional
+from urllib.parse import urlparse
 
 import torch
 import torch.nn as nn
@@ -17,6 +19,7 @@ from timm.data import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD, IMAGENET_INCE
 from timm.models.helpers import build_model_with_cfg, resolve_pretrained_cfg, named_apply, adapt_input_conv, checkpoint_seq
 from timm.models.layers import PatchEmbed, Mlp, DropPath, trunc_normal_, lecun_normal_
 from timm.models.registry import register_model
+import timm
 
 from backbone.prompt import Prompt
 
@@ -40,10 +43,58 @@ def _get_pretrained_cfg_value(cfg, key, default=None):
     return getattr(cfg, key, default)
 
 
+def _download_pretrained_npz(pretrained_url: str) -> str:
+    """Download NPZ checkpoints and reuse cached copies."""
+    if not pretrained_url:
+        raise ValueError("Empty url for pretrained checkpoint.")
+
+    download_cached_file = None
+    try:
+        from timm.models._hub import download_cached_file as timm_cached
+        download_cached_file = timm_cached
+    except Exception:
+        try:
+            from timm.models.hub import download_cached_file as timm_cached
+            download_cached_file = timm_cached
+        except Exception:
+            download_cached_file = None
+
+    if download_cached_file is not None:
+        return download_cached_file(pretrained_url)
+
+    cache_dir = os.path.join(torch.hub.get_dir(), 'checkpoints')
+    os.makedirs(cache_dir, exist_ok=True)
+    filename = os.path.basename(urlparse(pretrained_url).path) or 'checkpoint.npz'
+    dest_path = os.path.join(cache_dir, filename)
+    if not os.path.exists(dest_path):
+        _logger.info(f"Downloading pretrained weights from {pretrained_url} to {dest_path}")
+        torch.hub.download_url_to_file(pretrained_url, dest_path, progress=False)
+    else:
+        _logger.info(f"Using cached pretrained weights at {dest_path}")
+    return dest_path
+
+
+def _load_npz_weights(model, variant: str):
+    """Helper to load NPZ weights defined in default_cfgs into a model."""
+    pretrained_cfg = default_cfgs.get(variant, {})
+    pretrained_url = pretrained_cfg.get('url', '')
+    if not pretrained_url:
+        _logger.warning(f"No pretrained url configured for {variant}")
+        return
+    if pretrained_url.endswith('.npz'):
+        checkpoint_path = _download_pretrained_npz(pretrained_url)
+        model.load_pretrained(checkpoint_path)
+        _logger.info(f"Loaded NPZ weights for {variant} from {checkpoint_path}")
+    else:
+        _logger.warning(f"Pretrained url for {variant} is not an NPZ archive.")
+
+
 default_cfgs = {
     'vit_base_patch16_224_cpt': _cfg(
         url='https://storage.googleapis.com/vit_models/augreg/'
             'B_16-i21k-300ep-lr_0.001-aug_medium1-wd_0.1-do_0.0-sd_0.0--imagenet2012-steps_20k-lr_0.01-res_224.npz'),
+    'vit_base_patch16_224': _cfg(
+        url='https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz'),
 }
 
 
@@ -541,7 +592,6 @@ def _load_weights(model: VisionTransformer, checkpoint_path: str, prefix: str = 
     model.cls_token.copy_(_n2p(w[f'{prefix}cls'], t=False))
     pos_embed_w = _n2p(w[f'{prefix}Transformer/posembed_input/pos_embedding'], t=False)
     if pos_embed_w.shape != model.pos_embed.shape:
-        from timm.models.vision_transformer import resize_pos_embed
         pos_embed_w = resize_pos_embed(
             pos_embed_w,
             model.pos_embed,
@@ -614,30 +664,100 @@ def _create_vision_transformer(variant, pretrained=False, **kwargs):
     build_args = dict(
         pretrained_cfg=pretrained_cfg,
         pretrained_filter_fn=checkpoint_filter_fn,
+        pretrained_strict=False,
     )
     builder_params = inspect.signature(build_model_with_cfg).parameters
     if 'pretrained_custom_load' in builder_params:
         build_args['pretrained_custom_load'] = 'npz' in pretrained_url
 
-    try:
-        model = build_model_with_cfg(
-            VisionTransformer, variant, pretrained,
-            **build_args,
-            **kwargs)
-    except RuntimeError as err:
-        if pretrained and 'version' in str(err).lower() and 'npz' in pretrained_url:
-            logging.warning(
-                "Pretrained npz load failed for %s (%s); retrying without pretrained weights.",
-                variant,
-                err,
+    model = build_model_with_cfg(
+        VisionTransformer, variant, False,
+        **build_args,
+        **kwargs)
+
+    if pretrained:
+        try:
+            if pretrained_url.endswith('.npz'):
+                checkpoint_path = _download_pretrained_npz(pretrained_url)
+                model.load_pretrained(checkpoint_path)
+                _logger.info(f"Successfully loaded pretrained NPZ weights for {variant} from {checkpoint_path}")
+            else:
+                _logger.info(f"Loading pretrained weights for {variant} using timm...")
+                import warnings
+                with warnings.catch_warnings():
+                    warnings.simplefilter("ignore")
+                    try:
+                        from timm.models import vision_transformer as timm_vit
+                        if hasattr(timm_vit, variant):
+                            pretrained_model = getattr(timm_vit, variant)(pretrained=True, num_classes=0)
+                        else:
+                            raise AttributeError(f"{variant} not found in vision_transformer")
+                    except Exception as e1:
+                        _logger.warning(f"Direct import failed ({e1}), trying create_model...")
+                        pretrained_model = timm.create_model(variant, pretrained=True, num_classes=0)
+                pretrained_state_dict = pretrained_model.state_dict()
+                del pretrained_model
+                model_state_dict = model.state_dict()
+                filtered_state_dict = {}
+                for key, value in pretrained_state_dict.items():
+                    if 'head' in key or 'classifier' in key:
+                        continue
+                    if key in model_state_dict and model_state_dict[key].shape == value.shape:
+                        filtered_state_dict[key] = value
+                missing_keys, unexpected_keys = model.load_state_dict(filtered_state_dict, strict=False)
+                if missing_keys:
+                    non_prompt_missing = [k for k in missing_keys if 'prompt' not in k.lower()]
+                    if non_prompt_missing:
+                        _logger.warning(f"Missing keys (non-prompt): {non_prompt_missing[:5]}...")
+                if unexpected_keys:
+                    _logger.debug(f"Unexpected keys (ignored): {len(unexpected_keys)} keys")
+                _logger.info(f"Successfully loaded {len(filtered_state_dict)} pretrained weights for {variant}")
+        except Exception as err:
+            import traceback
+            _logger.error(
+                f"Failed to load pretrained weights for {variant}: {err}\n"
+                f"Traceback: {traceback.format_exc()}\n"
+                f"Continuing with randomly initialized weights."
             )
-            model = build_model_with_cfg(
-                VisionTransformer, variant, False,
-                **build_args,
-                **kwargs)
-        else:
-            raise
     return model
+
+
+def create_cpt_teacher(
+        pretrained: bool = True,
+        num_classes: int = 1000,
+        img_size: int = 224,
+        patch_size: int = 16,
+        in_chans: int = 3,
+        drop_rate: float = 0.0,
+        drop_path_rate: float = 0.0,
+        **kwargs):
+    """Create a plain ViT teacher (without CPT prompts) initialized from NPZ weights."""
+    teacher = VisionTransformer(
+        img_size=img_size,
+        patch_size=patch_size,
+        in_chans=in_chans,
+        num_classes=num_classes,
+        global_pool='token',
+        head_type='token',
+        embed_dim=kwargs.get('embed_dim', 768),
+        depth=kwargs.get('depth', 12),
+        num_heads=kwargs.get('num_heads', 12),
+        mlp_ratio=kwargs.get('mlp_ratio', 4.0),
+        qkv_bias=kwargs.get('qkv_bias', True),
+        drop_rate=drop_rate,
+        drop_path_rate=drop_path_rate,
+        prompt_pool=False,
+        prompt_length=None,
+        prompt_key=False,
+        pool_size=None,
+        top_k=None,
+    )
+    if pretrained:
+        _load_npz_weights(teacher, 'vit_base_patch16_224')
+    teacher.eval()
+    for p in teacher.parameters():
+        p.requires_grad = False
+    return teacher
 
 
 @register_model

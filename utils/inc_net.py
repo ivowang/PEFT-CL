@@ -816,11 +816,50 @@ class HiDePromptVitNet(nn.Module):
         return output
 
 # l2p and dualprompt
+class CPTVitNet(nn.Module):
+    def __init__(self, args, pretrained):
+        super(CPTVitNet, self).__init__()
+        self.args = args
+        self.backbone = get_backbone(args, pretrained)
+        if args.get("get_original_backbone", True):
+            self.original_backbone = self.get_original_backbone(args)
+        else:
+            self.original_backbone = None
+
+    def get_original_backbone(self, args):
+        from backbone.vit_cpt import create_cpt_teacher
+        teacher = create_cpt_teacher(
+            pretrained=args.get("pretrained", True),
+            num_classes=args["nb_classes"],
+            img_size=args.get("img_size", 224),
+            patch_size=args.get("patch_size", 16),
+            drop_rate=args.get("drop", 0.0),
+            drop_path_rate=args.get("drop_path", 0.0),
+        )
+        return teacher.eval()
+
+    def forward(self, x, task_id=-1, train=False):
+        cls_features = None
+        if self.original_backbone is not None:
+            with torch.no_grad():
+                teacher_output = self.original_backbone(x)
+                if isinstance(teacher_output, dict):
+                    cls_features = teacher_output.get('pre_logits', None)
+                else:
+                    cls_features = teacher_output
+        return self.backbone(x, task_id=task_id, cls_features=cls_features, train=train)
+
+
 class PromptVitNet(nn.Module):
     def __init__(self, args, pretrained):
         super(PromptVitNet, self).__init__()
         self.backbone = get_backbone(args, pretrained)
-        if args["get_original_backbone"]:
+        model_name = args.get("model_name", "").lower()
+        original_enabled = args.get("get_original_backbone", True)
+        # CPT (and other prompt-only methods) do not need an original backbone for cls features.
+        if model_name in {"cpt"}:
+            original_enabled = False
+        if original_enabled:
             self.original_backbone = self.get_original_backbone(args)
         else:
             self.original_backbone = None
