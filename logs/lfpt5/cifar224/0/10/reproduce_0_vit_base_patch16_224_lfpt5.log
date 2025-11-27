@@ -1,0 +1,176 @@
+2025-11-24 08:00:14,733 [trainer.py] => config: exps/lfpt5_c100.json
+2025-11-24 08:00:14,735 [trainer.py] => prefix: reproduce
+2025-11-24 08:00:14,735 [trainer.py] => dataset: cifar224
+2025-11-24 08:00:14,735 [trainer.py] => memory_size: 0
+2025-11-24 08:00:14,735 [trainer.py] => memory_per_class: 0
+2025-11-24 08:00:14,735 [trainer.py] => fixed_memory: False
+2025-11-24 08:00:14,735 [trainer.py] => shuffle: True
+2025-11-24 08:00:14,735 [trainer.py] => init_cls: 10
+2025-11-24 08:00:14,735 [trainer.py] => increment: 10
+2025-11-24 08:00:14,735 [trainer.py] => model_name: lfpt5
+2025-11-24 08:00:14,735 [trainer.py] => backbone_type: vit_base_patch16_224_lfpt5
+2025-11-24 08:00:14,735 [trainer.py] => get_original_backbone: True
+2025-11-24 08:00:14,735 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-24 08:00:14,735 [trainer.py] => seed: 0
+2025-11-24 08:00:14,735 [trainer.py] => tuned_epoch: 10
+2025-11-24 08:00:14,735 [trainer.py] => init_lr: 0.001
+2025-11-24 08:00:14,735 [trainer.py] => batch_size: 16
+2025-11-24 08:00:14,735 [trainer.py] => weight_decay: 0.0
+2025-11-24 08:00:14,735 [trainer.py] => min_lr: 1e-05
+2025-11-24 08:00:14,735 [trainer.py] => optimizer: adam
+2025-11-24 08:00:14,735 [trainer.py] => scheduler: constant
+2025-11-24 08:00:14,735 [trainer.py] => reinit_optimizer: True
+2025-11-24 08:00:14,735 [trainer.py] => global_pool: token
+2025-11-24 08:00:14,735 [trainer.py] => head_type: prompt
+2025-11-24 08:00:14,736 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2025-11-24 08:00:14,736 [trainer.py] => pretrained: True
+2025-11-24 08:00:14,736 [trainer.py] => drop: 0.0
+2025-11-24 08:00:14,736 [trainer.py] => drop_path: 0.0
+2025-11-24 08:00:14,736 [trainer.py] => length: 5
+2025-11-24 08:00:14,736 [trainer.py] => prompt_key_init: uniform
+2025-11-24 08:00:14,736 [trainer.py] => lfpt5_use_kd: True
+2025-11-24 08:00:14,736 [trainer.py] => lfpt5_kd_lambda: 0.5
+2025-11-24 08:00:14,736 [trainer.py] => mask_old_classes: False
+2025-11-24 08:00:16,950 [data_manager.py] => [26, 86, 2, 55, 75, 93, 16, 73, 54, 95, 53, 92, 78, 13, 7, 30, 22, 24, 33, 8, 43, 62, 3, 71, 45, 48, 6, 99, 82, 76, 60, 80, 90, 68, 51, 27, 18, 56, 63, 74, 1, 61, 42, 41, 4, 15, 17, 40, 38, 5, 91, 59, 0, 34, 28, 50, 11, 35, 23, 52, 10, 31, 66, 57, 79, 85, 32, 84, 14, 89, 19, 29, 49, 97, 98, 69, 20, 94, 72, 77, 25, 37, 81, 46, 39, 65, 58, 12, 88, 70, 87, 36, 21, 83, 9, 96, 67, 64, 47, 44]
+2025-11-24 08:00:18,817 [_builder.py] => Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-11-24 08:00:19,293 [_hub.py] => [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-11-24 08:00:19,304 [vit_lfpt5.py] => Resized position embedding: torch.Size([1, 197, 768]) to torch.Size([1, 202, 768])
+2025-11-24 08:00:19,304 [vit_lfpt5.py] => Position embedding grid-size from [14, 14] to (14, 14)
+2025-11-24 08:00:19,478 [_builder.py] => Missing keys (prompt.prompt_embedding, head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-11-24 08:00:20,628 [_builder.py] => Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-11-24 08:00:20,927 [_hub.py] => [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-11-24 08:00:20,952 [_builder.py] => Missing keys (head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-11-24 08:00:20,971 [lfpt5.py] => 85,883,236 model total parameters.
+2025-11-24 08:00:20,971 [lfpt5.py] => 80,740 model training parameters.
+2025-11-24 08:00:20,971 [lfpt5.py] => prompt.prompt_embedding: 3840
+2025-11-24 08:00:20,972 [lfpt5.py] => head.weight: 76800
+2025-11-24 08:00:20,972 [lfpt5.py] => head.bias: 100
+2025-11-24 08:00:20,973 [trainer.py] => All params: 171758792
+2025-11-24 08:00:20,974 [trainer.py] => Trainable params: 80740
+2025-11-24 08:00:20,974 [lfpt5.py] => Learning on 0-10
+2025-11-24 08:08:38,782 [lfpt5.py] => Task 0, Epoch 10/10 => Loss 0.321, KD_Loss 0.000, Train_accy 89.56, Test_accy 97.60
+2025-11-24 08:08:45,564 [lfpt5.py] => Saved prompt for task 0 for knowledge distillation
+2025-11-24 08:08:45,564 [trainer.py] => No NME accuracy.
+2025-11-24 08:08:45,564 [trainer.py] => CNN: {'total': np.float64(97.6), '00-09': np.float64(97.6), 'old': 0, 'new': np.float64(97.6)}
+2025-11-24 08:08:45,564 [trainer.py] => CNN top1 curve: [np.float64(97.6)]
+2025-11-24 08:08:45,565 [trainer.py] => CNN top5 curve: [np.float64(99.9)]
+
+2025-11-24 08:08:45,565 [trainer.py] => Average Accuracy (CNN): 97.6 
+
+2025-11-24 08:08:45,566 [trainer.py] => All params: 171758792
+2025-11-24 08:08:45,567 [trainer.py] => Trainable params: 80740
+2025-11-24 08:08:45,567 [lfpt5.py] => Learning on 10-20
+2025-11-24 08:08:45,591 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 08:22:11,680 [lfpt5.py] => Task 1, Epoch 10/10 => Loss 0.202, KD_Loss 0.147, Train_accy 93.76, Test_accy 54.55
+2025-11-24 08:22:24,840 [lfpt5.py] => Saved prompt for task 1 for knowledge distillation
+2025-11-24 08:22:24,841 [trainer.py] => No NME accuracy.
+2025-11-24 08:22:24,843 [trainer.py] => CNN: {'total': np.float64(54.55), '00-09': np.float64(10.7), '10-19': np.float64(98.4), 'old': np.float64(10.7), 'new': np.float64(98.4)}
+2025-11-24 08:22:24,843 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55)]
+2025-11-24 08:22:24,843 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6)]
+
+2025-11-24 08:22:24,845 [trainer.py] => Average Accuracy (CNN): 76.07499999999999 
+
+2025-11-24 08:22:24,846 [trainer.py] => All params: 171762632
+2025-11-24 08:22:24,847 [trainer.py] => Trainable params: 80740
+2025-11-24 08:22:24,847 [lfpt5.py] => Learning on 20-30
+2025-11-24 08:22:24,892 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 08:36:10,451 [lfpt5.py] => Task 2, Epoch 10/10 => Loss 0.211, KD_Loss 0.087, Train_accy 93.52, Test_accy 39.83
+2025-11-24 08:36:29,843 [lfpt5.py] => Saved prompt for task 2 for knowledge distillation
+2025-11-24 08:36:29,843 [trainer.py] => No NME accuracy.
+2025-11-24 08:36:29,843 [trainer.py] => CNN: {'total': np.float64(39.83), '00-09': np.float64(0.0), '10-19': np.float64(21.4), '20-29': np.float64(98.1), 'old': np.float64(10.7), 'new': np.float64(98.1)}
+2025-11-24 08:36:29,844 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83)]
+2025-11-24 08:36:29,844 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43)]
+
+2025-11-24 08:36:29,844 [trainer.py] => Average Accuracy (CNN): 63.99333333333332 
+
+2025-11-24 08:36:29,845 [trainer.py] => All params: 171762632
+2025-11-24 08:36:29,846 [trainer.py] => Trainable params: 80740
+2025-11-24 08:36:29,846 [lfpt5.py] => Learning on 30-40
+2025-11-24 08:36:29,877 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 08:50:57,511 [lfpt5.py] => Task 3, Epoch 10/10 => Loss 0.343, KD_Loss 0.174, Train_accy 88.52, Test_accy 32.90
+2025-11-24 08:51:24,894 [lfpt5.py] => Saved prompt for task 3 for knowledge distillation
+2025-11-24 08:51:24,895 [trainer.py] => No NME accuracy.
+2025-11-24 08:51:24,896 [trainer.py] => CNN: {'total': np.float64(32.9), '00-09': np.float64(0.0), '10-19': np.float64(0.1), '20-29': np.float64(36.1), '30-39': np.float64(95.4), 'old': np.float64(12.07), 'new': np.float64(95.4)}
+2025-11-24 08:51:24,896 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9)]
+2025-11-24 08:51:24,897 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4)]
+
+2025-11-24 08:51:24,898 [trainer.py] => Average Accuracy (CNN): 56.21999999999999 
+
+2025-11-24 08:51:24,899 [trainer.py] => All params: 171762632
+2025-11-24 08:51:24,900 [trainer.py] => Trainable params: 80740
+2025-11-24 08:51:24,900 [lfpt5.py] => Learning on 40-50
+2025-11-24 08:51:25,085 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 09:05:42,621 [lfpt5.py] => Task 4, Epoch 10/10 => Loss 0.228, KD_Loss 0.082, Train_accy 92.66, Test_accy 25.38
+2025-11-24 09:06:17,480 [lfpt5.py] => Saved prompt for task 4 for knowledge distillation
+2025-11-24 09:06:17,480 [trainer.py] => No NME accuracy.
+2025-11-24 09:06:17,482 [trainer.py] => CNN: {'total': np.float64(25.38), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.4), '30-39': np.float64(28.0), '40-49': np.float64(98.5), 'old': np.float64(7.1), 'new': np.float64(98.5)}
+2025-11-24 09:06:17,482 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38)]
+2025-11-24 09:06:17,482 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92)]
+
+2025-11-24 09:06:17,484 [trainer.py] => Average Accuracy (CNN): 50.05199999999999 
+
+2025-11-24 09:06:17,486 [trainer.py] => All params: 171762632
+2025-11-24 09:06:17,487 [trainer.py] => Trainable params: 80740
+2025-11-24 09:06:17,487 [lfpt5.py] => Learning on 50-60
+2025-11-24 09:06:17,581 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 09:20:52,297 [lfpt5.py] => Task 5, Epoch 10/10 => Loss 0.327, KD_Loss 0.093, Train_accy 88.18, Test_accy 20.68
+2025-11-24 09:21:30,857 [lfpt5.py] => Saved prompt for task 5 for knowledge distillation
+2025-11-24 09:21:30,857 [trainer.py] => No NME accuracy.
+2025-11-24 09:21:30,861 [trainer.py] => CNN: {'total': np.float64(20.68), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.2), '40-49': np.float64(31.1), '50-59': np.float64(92.8), 'old': np.float64(6.26), 'new': np.float64(92.8)}
+2025-11-24 09:21:30,861 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38), np.float64(20.68)]
+2025-11-24 09:21:30,861 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92), np.float64(31.18)]
+
+2025-11-24 09:21:30,865 [trainer.py] => Average Accuracy (CNN): 45.15666666666666 
+
+2025-11-24 09:21:30,866 [trainer.py] => All params: 171762632
+2025-11-24 09:21:30,867 [trainer.py] => Trainable params: 80740
+2025-11-24 09:21:30,867 [lfpt5.py] => Learning on 60-70
+2025-11-24 09:21:30,973 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 09:35:58,913 [lfpt5.py] => Task 6, Epoch 10/10 => Loss 0.283, KD_Loss 0.064, Train_accy 91.52, Test_accy 15.60
+2025-11-24 09:36:43,851 [lfpt5.py] => Saved prompt for task 6 for knowledge distillation
+2025-11-24 09:36:43,852 [trainer.py] => No NME accuracy.
+2025-11-24 09:36:43,852 [trainer.py] => CNN: {'total': np.float64(15.6), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(11.7), '60-69': np.float64(97.5), 'old': np.float64(1.95), 'new': np.float64(97.5)}
+2025-11-24 09:36:43,852 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38), np.float64(20.68), np.float64(15.6)]
+2025-11-24 09:36:43,852 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92), np.float64(31.18), np.float64(23.54)]
+
+2025-11-24 09:36:43,852 [trainer.py] => Average Accuracy (CNN): 40.93428571428571 
+
+2025-11-24 09:36:43,853 [trainer.py] => All params: 171762632
+2025-11-24 09:36:43,854 [trainer.py] => Trainable params: 80740
+2025-11-24 09:36:43,855 [lfpt5.py] => Learning on 70-80
+2025-11-24 09:36:43,911 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 09:51:43,705 [lfpt5.py] => Task 7, Epoch 10/10 => Loss 0.240, KD_Loss 0.055, Train_accy 92.66, Test_accy 17.75
+2025-11-24 09:52:34,861 [lfpt5.py] => Saved prompt for task 7 for knowledge distillation
+2025-11-24 09:52:34,861 [trainer.py] => No NME accuracy.
+2025-11-24 09:52:34,862 [trainer.py] => CNN: {'total': np.float64(17.75), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(44.1), '70-79': np.float64(97.9), 'old': np.float64(6.3), 'new': np.float64(97.9)}
+2025-11-24 09:52:34,862 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38), np.float64(20.68), np.float64(15.6), np.float64(17.75)]
+2025-11-24 09:52:34,862 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92), np.float64(31.18), np.float64(23.54), np.float64(22.29)]
+
+2025-11-24 09:52:34,863 [trainer.py] => Average Accuracy (CNN): 38.036249999999995 
+
+2025-11-24 09:52:34,864 [trainer.py] => All params: 171762632
+2025-11-24 09:52:34,865 [trainer.py] => Trainable params: 80740
+2025-11-24 09:52:34,865 [lfpt5.py] => Learning on 80-90
+2025-11-24 09:52:34,948 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 10:07:32,909 [lfpt5.py] => Task 8, Epoch 10/10 => Loss 0.239, KD_Loss 0.054, Train_accy 92.42, Test_accy 14.17
+2025-11-24 10:08:30,354 [lfpt5.py] => Saved prompt for task 8 for knowledge distillation
+2025-11-24 10:08:30,355 [trainer.py] => No NME accuracy.
+2025-11-24 10:08:30,355 [trainer.py] => CNN: {'total': np.float64(14.17), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(0.4), '70-79': np.float64(29.3), '80-89': np.float64(97.8), 'old': np.float64(3.71), 'new': np.float64(97.8)}
+2025-11-24 10:08:30,355 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38), np.float64(20.68), np.float64(15.6), np.float64(17.75), np.float64(14.17)]
+2025-11-24 10:08:30,355 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92), np.float64(31.18), np.float64(23.54), np.float64(22.29), np.float64(20.51)]
+
+2025-11-24 10:08:30,356 [trainer.py] => Average Accuracy (CNN): 35.38444444444444 
+
+2025-11-24 10:08:30,357 [trainer.py] => All params: 171762632
+2025-11-24 10:08:30,359 [trainer.py] => Trainable params: 80740
+2025-11-24 10:08:30,359 [lfpt5.py] => Learning on 90-100
+2025-11-24 10:08:30,422 [lfpt5.py] => Set previous prompt for knowledge distillation
+2025-11-24 10:23:40,692 [lfpt5.py] => Task 9, Epoch 10/10 => Loss 0.236, KD_Loss 0.044, Train_accy 91.98, Test_accy 12.95
+2025-11-24 10:24:45,271 [lfpt5.py] => Saved prompt for task 9 for knowledge distillation
+2025-11-24 10:24:45,272 [trainer.py] => No NME accuracy.
+2025-11-24 10:24:45,273 [trainer.py] => CNN: {'total': np.float64(12.95), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(0.0), '70-79': np.float64(0.2), '80-89': np.float64(33.3), '90-99': np.float64(96.0), 'old': np.float64(3.72), 'new': np.float64(96.0)}
+2025-11-24 10:24:45,273 [trainer.py] => CNN top1 curve: [np.float64(97.6), np.float64(54.55), np.float64(39.83), np.float64(32.9), np.float64(25.38), np.float64(20.68), np.float64(15.6), np.float64(17.75), np.float64(14.17), np.float64(12.95)]
+2025-11-24 10:24:45,273 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(79.6), np.float64(60.43), np.float64(45.4), np.float64(35.92), np.float64(31.18), np.float64(23.54), np.float64(22.29), np.float64(20.51), np.float64(18.49)]
+
+2025-11-24 10:24:45,273 [trainer.py] => Average Accuracy (CNN): 33.141 
+

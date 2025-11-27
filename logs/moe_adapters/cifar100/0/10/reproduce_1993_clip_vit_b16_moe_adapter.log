@@ -1,0 +1,123 @@
+2025-11-23 20:29:50,637 [trainer.py] => config: exps/moe_adapters_c100.json
+2025-11-23 20:29:50,639 [trainer.py] => prefix: reproduce
+2025-11-23 20:29:50,639 [trainer.py] => dataset: cifar100
+2025-11-23 20:29:50,639 [trainer.py] => memory_size: 0
+2025-11-23 20:29:50,639 [trainer.py] => memory_per_class: 0
+2025-11-23 20:29:50,639 [trainer.py] => fixed_memory: False
+2025-11-23 20:29:50,639 [trainer.py] => shuffle: True
+2025-11-23 20:29:50,639 [trainer.py] => init_cls: 10
+2025-11-23 20:29:50,639 [trainer.py] => increment: 10
+2025-11-23 20:29:50,639 [trainer.py] => model_name: moe_adapters
+2025-11-23 20:29:50,639 [trainer.py] => backbone_type: clip_vit_b16_moe_adapter
+2025-11-23 20:29:50,639 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-23 20:29:50,639 [trainer.py] => seed: 1993
+2025-11-23 20:29:50,639 [trainer.py] => batch_size: 128
+2025-11-23 20:29:50,639 [trainer.py] => num_workers: 8
+2025-11-23 20:29:50,639 [trainer.py] => clip_model_name: ViT-B/16
+2025-11-23 20:29:50,639 [trainer.py] => clip_pretrained: True
+2025-11-23 20:29:50,639 [trainer.py] => prompt_template: a photo of a {}.
+2025-11-23 20:29:50,639 [trainer.py] => adapter_lr: 0.001
+2025-11-23 20:29:50,639 [trainer.py] => adapter_weight_decay: 0.0
+2025-11-23 20:29:50,639 [trainer.py] => adapter_label_smoothing: 0.0
+2025-11-23 20:29:50,640 [trainer.py] => adapter_epochs: 1
+2025-11-23 20:29:52,714 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2025-11-23 20:30:00,402 [trainer.py] => All params: 153648129
+2025-11-23 20:30:00,404 [trainer.py] => Trainable params: 153648129
+2025-11-23 20:30:00,404 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:30:45,337 [trainer.py] => No NME accuracy.
+2025-11-23 20:30:45,339 [trainer.py] => CNN: {'total': np.float64(97.2), '00-09': np.float64(97.2), 'old': 0, 'new': np.float64(97.2)}
+2025-11-23 20:30:45,339 [trainer.py] => CNN top1 curve: [np.float64(97.2)]
+2025-11-23 20:30:45,339 [trainer.py] => CNN top5 curve: [np.float64(99.9)]
+
+2025-11-23 20:30:45,339 [trainer.py] => Average Accuracy (CNN): 97.2 
+
+2025-11-23 20:30:45,340 [trainer.py] => All params: 153648129
+2025-11-23 20:30:45,342 [trainer.py] => Trainable params: 4027392
+2025-11-23 20:30:45,342 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:31:26,404 [trainer.py] => No NME accuracy.
+2025-11-23 20:31:26,404 [trainer.py] => CNN: {'total': np.float64(97.8), '00-09': np.float64(97.8), 'old': 0, 'new': np.float64(97.8)}
+2025-11-23 20:31:26,404 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8)]
+2025-11-23 20:31:26,404 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0)]
+
+2025-11-23 20:31:26,404 [trainer.py] => Average Accuracy (CNN): 97.5 
+
+2025-11-23 20:31:26,406 [trainer.py] => All params: 153709569
+2025-11-23 20:31:26,408 [trainer.py] => Trainable params: 4088832
+2025-11-23 20:31:26,408 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:32:06,015 [trainer.py] => No NME accuracy.
+2025-11-23 20:32:06,015 [trainer.py] => CNN: {'total': np.float64(98.0), '00-09': np.float64(98.0), 'old': 0, 'new': np.float64(98.0)}
+2025-11-23 20:32:06,015 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0)]
+2025-11-23 20:32:06,015 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:32:06,016 [trainer.py] => Average Accuracy (CNN): 97.66666666666667 
+
+2025-11-23 20:32:06,017 [trainer.py] => All params: 153771009
+2025-11-23 20:32:06,019 [trainer.py] => Trainable params: 4150272
+2025-11-23 20:32:06,019 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:32:46,898 [trainer.py] => No NME accuracy.
+2025-11-23 20:32:46,899 [trainer.py] => CNN: {'total': np.float64(97.9), '00-09': np.float64(97.9), 'old': 0, 'new': np.float64(97.9)}
+2025-11-23 20:32:46,899 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9)]
+2025-11-23 20:32:46,899 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:32:46,899 [trainer.py] => Average Accuracy (CNN): 97.725 
+
+2025-11-23 20:32:46,901 [trainer.py] => All params: 153832449
+2025-11-23 20:32:46,903 [trainer.py] => Trainable params: 4211712
+2025-11-23 20:32:46,903 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:33:26,849 [trainer.py] => No NME accuracy.
+2025-11-23 20:33:26,850 [trainer.py] => CNN: {'total': np.float64(98.0), '00-09': np.float64(98.0), 'old': 0, 'new': np.float64(98.0)}
+2025-11-23 20:33:26,853 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0)]
+2025-11-23 20:33:26,853 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:33:26,853 [trainer.py] => Average Accuracy (CNN): 97.78 
+
+2025-11-23 20:33:26,861 [trainer.py] => All params: 153893889
+2025-11-23 20:33:26,871 [trainer.py] => Trainable params: 4273152
+2025-11-23 20:33:26,872 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:34:09,726 [trainer.py] => No NME accuracy.
+2025-11-23 20:34:09,726 [trainer.py] => CNN: {'total': np.float64(98.4), '00-09': np.float64(98.4), 'old': 0, 'new': np.float64(98.4)}
+2025-11-23 20:34:09,726 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0), np.float64(98.4)]
+2025-11-23 20:34:09,727 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:34:09,727 [trainer.py] => Average Accuracy (CNN): 97.88333333333333 
+
+2025-11-23 20:34:09,728 [trainer.py] => All params: 153955329
+2025-11-23 20:34:09,731 [trainer.py] => Trainable params: 4334592
+2025-11-23 20:34:09,732 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:34:50,385 [trainer.py] => No NME accuracy.
+2025-11-23 20:34:50,386 [trainer.py] => CNN: {'total': np.float64(98.0), '00-09': np.float64(98.0), 'old': 0, 'new': np.float64(98.0)}
+2025-11-23 20:34:50,387 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0), np.float64(98.4), np.float64(98.0)]
+2025-11-23 20:34:50,387 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:34:50,387 [trainer.py] => Average Accuracy (CNN): 97.89999999999999 
+
+2025-11-23 20:34:50,401 [trainer.py] => All params: 154016769
+2025-11-23 20:34:50,415 [trainer.py] => Trainable params: 4396032
+2025-11-23 20:34:50,416 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:35:29,814 [trainer.py] => No NME accuracy.
+2025-11-23 20:35:29,815 [trainer.py] => CNN: {'total': np.float64(98.4), '00-09': np.float64(98.4), 'old': 0, 'new': np.float64(98.4)}
+2025-11-23 20:35:29,815 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0), np.float64(98.4), np.float64(98.0), np.float64(98.4)]
+2025-11-23 20:35:29,815 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0)]
+
+2025-11-23 20:35:29,815 [trainer.py] => Average Accuracy (CNN): 97.96249999999999 
+
+2025-11-23 20:35:29,817 [trainer.py] => All params: 154078209
+2025-11-23 20:35:29,819 [trainer.py] => Trainable params: 4457472
+2025-11-23 20:35:29,819 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:36:09,918 [trainer.py] => No NME accuracy.
+2025-11-23 20:36:09,918 [trainer.py] => CNN: {'total': np.float64(98.7), '00-09': np.float64(98.7), 'old': 0, 'new': np.float64(98.7)}
+2025-11-23 20:36:09,919 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0), np.float64(98.4), np.float64(98.0), np.float64(98.4), np.float64(98.7)]
+2025-11-23 20:36:09,919 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(99.9)]
+
+2025-11-23 20:36:09,919 [trainer.py] => Average Accuracy (CNN): 98.04444444444444 
+
+2025-11-23 20:36:09,928 [trainer.py] => All params: 154139649
+2025-11-23 20:36:09,932 [trainer.py] => Trainable params: 4518912
+2025-11-23 20:36:09,933 [moe_adapters.py] => Learning on 0-10
+2025-11-23 20:36:50,088 [trainer.py] => No NME accuracy.
+2025-11-23 20:36:50,088 [trainer.py] => CNN: {'total': np.float64(98.7), '00-09': np.float64(98.7), 'old': 0, 'new': np.float64(98.7)}
+2025-11-23 20:36:50,088 [trainer.py] => CNN top1 curve: [np.float64(97.2), np.float64(97.8), np.float64(98.0), np.float64(97.9), np.float64(98.0), np.float64(98.4), np.float64(98.0), np.float64(98.4), np.float64(98.7), np.float64(98.7)]
+2025-11-23 20:36:50,089 [trainer.py] => CNN top5 curve: [np.float64(99.9), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(100.0), np.float64(99.9), np.float64(100.0)]
+
+2025-11-23 20:36:50,089 [trainer.py] => Average Accuracy (CNN): 98.11 
+

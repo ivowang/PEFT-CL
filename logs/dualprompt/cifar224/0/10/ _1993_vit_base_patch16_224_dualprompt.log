@@ -1,0 +1,175 @@
+2025-11-23 18:42:27,635 [trainer.py] => config: exps/dualprompt.json
+2025-11-23 18:42:27,636 [trainer.py] => prefix:  
+2025-11-23 18:42:27,637 [trainer.py] => dataset: cifar224
+2025-11-23 18:42:27,637 [trainer.py] => memory_size: 0
+2025-11-23 18:42:27,637 [trainer.py] => memory_per_class: 0
+2025-11-23 18:42:27,637 [trainer.py] => fixed_memory: False
+2025-11-23 18:42:27,637 [trainer.py] => shuffle: True
+2025-11-23 18:42:27,637 [trainer.py] => init_cls: 10
+2025-11-23 18:42:27,637 [trainer.py] => increment: 10
+2025-11-23 18:42:27,637 [trainer.py] => model_name: dualprompt
+2025-11-23 18:42:27,637 [trainer.py] => backbone_type: vit_base_patch16_224_dualprompt
+2025-11-23 18:42:27,637 [trainer.py] => get_original_backbone: True
+2025-11-23 18:42:27,637 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-23 18:42:27,637 [trainer.py] => seed: 1993
+2025-11-23 18:42:27,637 [trainer.py] => tuned_epoch: 5
+2025-11-23 18:42:27,637 [trainer.py] => init_lr: 0.001
+2025-11-23 18:42:27,637 [trainer.py] => batch_size: 24
+2025-11-23 18:42:27,637 [trainer.py] => weight_decay: 0
+2025-11-23 18:42:27,637 [trainer.py] => min_lr: 1e-05
+2025-11-23 18:42:27,637 [trainer.py] => optimizer: adam
+2025-11-23 18:42:27,637 [trainer.py] => scheduler: constant
+2025-11-23 18:42:27,637 [trainer.py] => reinit_optimizer: True
+2025-11-23 18:42:27,637 [trainer.py] => global_pool: token
+2025-11-23 18:42:27,637 [trainer.py] => head_type: token
+2025-11-23 18:42:27,638 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2025-11-23 18:42:27,638 [trainer.py] => pretrained: True
+2025-11-23 18:42:27,638 [trainer.py] => drop: 0.0
+2025-11-23 18:42:27,638 [trainer.py] => drop_path: 0.0
+2025-11-23 18:42:27,638 [trainer.py] => use_g_prompt: True
+2025-11-23 18:42:27,638 [trainer.py] => g_prompt_length: 5
+2025-11-23 18:42:27,638 [trainer.py] => g_prompt_layer_idx: [0, 1]
+2025-11-23 18:42:27,638 [trainer.py] => use_prefix_tune_for_g_prompt: True
+2025-11-23 18:42:27,638 [trainer.py] => use_e_prompt: True
+2025-11-23 18:42:27,638 [trainer.py] => e_prompt_layer_idx: [2, 3, 4]
+2025-11-23 18:42:27,638 [trainer.py] => use_prefix_tune_for_e_prompt: True
+2025-11-23 18:42:27,638 [trainer.py] => prompt_pool: True
+2025-11-23 18:42:27,638 [trainer.py] => size: 10
+2025-11-23 18:42:27,638 [trainer.py] => length: 5
+2025-11-23 18:42:27,638 [trainer.py] => top_k: 1
+2025-11-23 18:42:27,638 [trainer.py] => initializer: uniform
+2025-11-23 18:42:27,639 [trainer.py] => prompt_key: True
+2025-11-23 18:42:27,639 [trainer.py] => prompt_key_init: uniform
+2025-11-23 18:42:27,639 [trainer.py] => use_prompt_mask: True
+2025-11-23 18:42:27,639 [trainer.py] => shared_prompt_pool: True
+2025-11-23 18:42:27,639 [trainer.py] => shared_prompt_key: False
+2025-11-23 18:42:27,639 [trainer.py] => batchwise_prompt: True
+2025-11-23 18:42:27,639 [trainer.py] => embedding_key: cls
+2025-11-23 18:42:27,639 [trainer.py] => predefined_key: 
+2025-11-23 18:42:27,639 [trainer.py] => pull_constraint: True
+2025-11-23 18:42:27,639 [trainer.py] => pull_constraint_coeff: 0.1
+2025-11-23 18:42:27,639 [trainer.py] => same_key_value: False
+2025-11-23 18:42:29,536 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2025-11-23 18:42:32,868 [_builder.py] => Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-11-23 18:42:33,186 [_hub.py] => [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-11-23 18:42:33,475 [_builder.py] => Missing keys (g_prompt, e_prompt.prompt, e_prompt.prompt_key, head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-11-23 18:42:34,981 [_builder.py] => Loading pretrained weights from Hugging Face hub (timm/vit_base_patch16_224.augreg2_in21k_ft_in1k)
+2025-11-23 18:42:35,222 [_hub.py] => [timm/vit_base_patch16_224.augreg2_in21k_ft_in1k] Safe alternative available for 'pytorch_model.bin' (as 'model.safetensors'). Loading weights using safetensors.
+2025-11-23 18:42:35,302 [_builder.py] => Missing keys (head.weight, head.bias) discovered while loading pretrained weights. This is expected if model is being adapted.
+2025-11-23 18:42:35,320 [dualprompt.py] => 86,128,996 model total parameters.
+2025-11-23 18:42:35,321 [dualprompt.py] => 330,340 model training parameters.
+2025-11-23 18:42:35,321 [dualprompt.py] => g_prompt: 15360
+2025-11-23 18:42:35,321 [dualprompt.py] => e_prompt.prompt: 230400
+2025-11-23 18:42:35,321 [dualprompt.py] => e_prompt.prompt_key: 7680
+2025-11-23 18:42:35,322 [dualprompt.py] => head.weight: 76800
+2025-11-23 18:42:35,322 [dualprompt.py] => head.bias: 100
+2025-11-23 18:42:35,323 [trainer.py] => All params: 172004552
+2025-11-23 18:42:35,324 [trainer.py] => Trainable params: 330340
+2025-11-23 18:42:35,324 [dualprompt.py] => Learning on 0-10
+2025-11-23 18:46:50,898 [dualprompt.py] => Task 0, Epoch 5/5 => Loss 0.269, Train_accy 89.42, Test_accy 96.70
+2025-11-23 18:46:57,964 [trainer.py] => No NME accuracy.
+2025-11-23 18:46:57,967 [trainer.py] => CNN: {'total': np.float64(96.7), '00-09': np.float64(96.7), 'old': 0, 'new': np.float64(96.7)}
+2025-11-23 18:46:57,967 [trainer.py] => CNN top1 curve: [np.float64(96.7)]
+2025-11-23 18:46:57,967 [trainer.py] => CNN top5 curve: [np.float64(99.8)]
+
+2025-11-23 18:46:57,969 [trainer.py] => Average Accuracy (CNN): 96.7 
+
+2025-11-23 18:46:57,970 [trainer.py] => All params: 172004552
+2025-11-23 18:46:57,971 [trainer.py] => Trainable params: 330340
+2025-11-23 18:46:57,971 [dualprompt.py] => Learning on 10-20
+2025-11-23 18:51:03,060 [dualprompt.py] => Task 1, Epoch 5/5 => Loss 0.299, Train_accy 88.86, Test_accy 94.65
+2025-11-23 18:51:15,648 [trainer.py] => No NME accuracy.
+2025-11-23 18:51:15,648 [trainer.py] => CNN: {'total': np.float64(94.65), '00-09': np.float64(94.6), '10-19': np.float64(94.7), 'old': np.float64(94.6), 'new': np.float64(94.7)}
+2025-11-23 18:51:15,648 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65)]
+2025-11-23 18:51:15,648 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4)]
+
+2025-11-23 18:51:15,648 [trainer.py] => Average Accuracy (CNN): 95.67500000000001 
+
+2025-11-23 18:51:15,650 [trainer.py] => All params: 172004552
+2025-11-23 18:51:15,651 [trainer.py] => Trainable params: 330340
+2025-11-23 18:51:15,651 [dualprompt.py] => Learning on 20-30
+2025-11-23 18:55:29,565 [dualprompt.py] => Task 2, Epoch 5/5 => Loss 0.156, Train_accy 93.68, Test_accy 92.70
+2025-11-23 18:55:48,064 [trainer.py] => No NME accuracy.
+2025-11-23 18:55:48,064 [trainer.py] => CNN: {'total': np.float64(92.7), '00-09': np.float64(91.6), '10-19': np.float64(91.4), '20-29': np.float64(95.1), 'old': np.float64(91.5), 'new': np.float64(95.1)}
+2025-11-23 18:55:48,064 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7)]
+2025-11-23 18:55:48,064 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2)]
+
+2025-11-23 18:55:48,064 [trainer.py] => Average Accuracy (CNN): 94.68333333333334 
+
+2025-11-23 18:55:48,065 [trainer.py] => All params: 172004552
+2025-11-23 18:55:48,067 [trainer.py] => Trainable params: 330340
+2025-11-23 18:55:48,067 [dualprompt.py] => Learning on 30-40
+2025-11-23 19:00:11,273 [dualprompt.py] => Task 3, Epoch 5/5 => Loss 0.222, Train_accy 90.70, Test_accy 91.30
+2025-11-23 19:00:35,998 [trainer.py] => No NME accuracy.
+2025-11-23 19:00:36,000 [trainer.py] => CNN: {'total': np.float64(91.3), '00-09': np.float64(91.2), '10-19': np.float64(90.0), '20-29': np.float64(94.2), '30-39': np.float64(89.8), 'old': np.float64(91.8), 'new': np.float64(89.8)}
+2025-11-23 19:00:36,000 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3)]
+2025-11-23 19:00:36,001 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85)]
+
+2025-11-23 19:00:36,001 [trainer.py] => Average Accuracy (CNN): 93.8375 
+
+2025-11-23 19:00:36,002 [trainer.py] => All params: 172004552
+2025-11-23 19:00:36,003 [trainer.py] => Trainable params: 330340
+2025-11-23 19:00:36,003 [dualprompt.py] => Learning on 40-50
+2025-11-23 19:05:02,514 [dualprompt.py] => Task 4, Epoch 5/5 => Loss 0.144, Train_accy 94.10, Test_accy 89.26
+2025-11-23 19:05:33,188 [trainer.py] => No NME accuracy.
+2025-11-23 19:05:33,188 [trainer.py] => CNN: {'total': np.float64(89.26), '00-09': np.float64(90.1), '10-19': np.float64(87.0), '20-29': np.float64(93.9), '30-39': np.float64(87.4), '40-49': np.float64(87.9), 'old': np.float64(89.6), 'new': np.float64(87.9)}
+2025-11-23 19:05:33,188 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26)]
+2025-11-23 19:05:33,188 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82)]
+
+2025-11-23 19:05:33,188 [trainer.py] => Average Accuracy (CNN): 92.922 
+
+2025-11-23 19:05:33,190 [trainer.py] => All params: 172004552
+2025-11-23 19:05:33,191 [trainer.py] => Trainable params: 330340
+2025-11-23 19:05:33,191 [dualprompt.py] => Learning on 50-60
+2025-11-23 19:10:08,903 [dualprompt.py] => Task 5, Epoch 5/5 => Loss 0.238, Train_accy 90.70, Test_accy 87.18
+2025-11-23 19:10:45,508 [trainer.py] => No NME accuracy.
+2025-11-23 19:10:45,509 [trainer.py] => CNN: {'total': np.float64(87.18), '00-09': np.float64(87.6), '10-19': np.float64(86.5), '20-29': np.float64(94.0), '30-39': np.float64(86.1), '40-49': np.float64(83.6), '50-59': np.float64(85.3), 'old': np.float64(87.56), 'new': np.float64(85.3)}
+2025-11-23 19:10:45,509 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26), np.float64(87.18)]
+2025-11-23 19:10:45,509 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82), np.float64(98.62)]
+
+2025-11-23 19:10:45,509 [trainer.py] => Average Accuracy (CNN): 91.96499999999999 
+
+2025-11-23 19:10:45,511 [trainer.py] => All params: 172004552
+2025-11-23 19:10:45,511 [trainer.py] => Trainable params: 330340
+2025-11-23 19:10:45,512 [dualprompt.py] => Learning on 60-70
+2025-11-23 19:15:23,407 [dualprompt.py] => Task 6, Epoch 5/5 => Loss 0.134, Train_accy 94.50, Test_accy 86.76
+2025-11-23 19:16:05,980 [trainer.py] => No NME accuracy.
+2025-11-23 19:16:05,981 [trainer.py] => CNN: {'total': np.float64(86.76), '00-09': np.float64(85.7), '10-19': np.float64(85.9), '20-29': np.float64(92.9), '30-39': np.float64(85.0), '40-49': np.float64(82.6), '50-59': np.float64(80.6), '60-69': np.float64(94.6), 'old': np.float64(85.45), 'new': np.float64(94.6)}
+2025-11-23 19:16:05,981 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26), np.float64(87.18), np.float64(86.76)]
+2025-11-23 19:16:05,981 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82), np.float64(98.62), np.float64(98.46)]
+
+2025-11-23 19:16:05,981 [trainer.py] => Average Accuracy (CNN): 91.22142857142856 
+
+2025-11-23 19:16:05,982 [trainer.py] => All params: 172004552
+2025-11-23 19:16:05,983 [trainer.py] => Trainable params: 330340
+2025-11-23 19:16:05,983 [dualprompt.py] => Learning on 70-80
+2025-11-23 19:20:45,505 [dualprompt.py] => Task 7, Epoch 5/5 => Loss 0.201, Train_accy 91.88, Test_accy 84.81
+2025-11-23 19:21:34,100 [trainer.py] => No NME accuracy.
+2025-11-23 19:21:34,101 [trainer.py] => CNN: {'total': np.float64(84.81), '00-09': np.float64(85.6), '10-19': np.float64(85.7), '20-29': np.float64(92.7), '30-39': np.float64(85.1), '40-49': np.float64(82.1), '50-59': np.float64(78.7), '60-69': np.float64(92.8), '70-79': np.float64(75.8), 'old': np.float64(86.1), 'new': np.float64(75.8)}
+2025-11-23 19:21:34,101 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26), np.float64(87.18), np.float64(86.76), np.float64(84.81)]
+2025-11-23 19:21:34,101 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82), np.float64(98.62), np.float64(98.46), np.float64(98.25)]
+
+2025-11-23 19:21:34,101 [trainer.py] => Average Accuracy (CNN): 90.41999999999999 
+
+2025-11-23 19:21:34,102 [trainer.py] => All params: 172004552
+2025-11-23 19:21:34,103 [trainer.py] => Trainable params: 330340
+2025-11-23 19:21:34,104 [dualprompt.py] => Learning on 80-90
+2025-11-23 19:26:19,964 [dualprompt.py] => Task 8, Epoch 5/5 => Loss 0.181, Train_accy 92.58, Test_accy 83.80
+2025-11-23 19:27:14,394 [trainer.py] => No NME accuracy.
+2025-11-23 19:27:14,394 [trainer.py] => CNN: {'total': np.float64(83.8), '00-09': np.float64(84.8), '10-19': np.float64(83.9), '20-29': np.float64(92.5), '30-39': np.float64(84.6), '40-49': np.float64(81.8), '50-59': np.float64(77.7), '60-69': np.float64(92.6), '70-79': np.float64(73.4), '80-89': np.float64(82.9), 'old': np.float64(83.91), 'new': np.float64(82.9)}
+2025-11-23 19:27:14,394 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26), np.float64(87.18), np.float64(86.76), np.float64(84.81), np.float64(83.8)]
+2025-11-23 19:27:14,395 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82), np.float64(98.62), np.float64(98.46), np.float64(98.25), np.float64(97.94)]
+
+2025-11-23 19:27:14,395 [trainer.py] => Average Accuracy (CNN): 89.68444444444442 
+
+2025-11-23 19:27:14,396 [trainer.py] => All params: 172004552
+2025-11-23 19:27:14,397 [trainer.py] => Trainable params: 330340
+2025-11-23 19:27:14,397 [dualprompt.py] => Learning on 90-100
+2025-11-23 19:32:06,516 [dualprompt.py] => Task 9, Epoch 5/5 => Loss 0.213, Train_accy 91.56, Test_accy 83.94
+2025-11-23 19:33:06,935 [trainer.py] => No NME accuracy.
+2025-11-23 19:33:06,936 [trainer.py] => CNN: {'total': np.float64(83.94), '00-09': np.float64(83.6), '10-19': np.float64(83.5), '20-29': np.float64(92.4), '30-39': np.float64(84.9), '40-49': np.float64(82.2), '50-59': np.float64(78.8), '60-69': np.float64(92.2), '70-79': np.float64(74.6), '80-89': np.float64(82.8), '90-99': np.float64(84.4), 'old': np.float64(83.89), 'new': np.float64(84.4)}
+2025-11-23 19:33:06,936 [trainer.py] => CNN top1 curve: [np.float64(96.7), np.float64(94.65), np.float64(92.7), np.float64(91.3), np.float64(89.26), np.float64(87.18), np.float64(86.76), np.float64(84.81), np.float64(83.8), np.float64(83.94)]
+2025-11-23 19:33:06,936 [trainer.py] => CNN top5 curve: [np.float64(99.8), np.float64(99.4), np.float64(99.2), np.float64(98.85), np.float64(98.82), np.float64(98.62), np.float64(98.46), np.float64(98.25), np.float64(97.94), np.float64(97.76)]
+
+2025-11-23 19:33:06,936 [trainer.py] => Average Accuracy (CNN): 89.10999999999999 
+

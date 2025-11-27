@@ -1,0 +1,354 @@
+2025-11-23 21:05:23,949 [trainer.py] => config: exps/hideprompt_c100.json
+2025-11-23 21:05:23,950 [trainer.py] => prefix: reproduce
+2025-11-23 21:05:23,950 [trainer.py] => dataset: cifar224
+2025-11-23 21:05:23,950 [trainer.py] => memory_size: 0
+2025-11-23 21:05:23,950 [trainer.py] => memory_per_class: 0
+2025-11-23 21:05:23,950 [trainer.py] => fixed_memory: False
+2025-11-23 21:05:23,951 [trainer.py] => shuffle: True
+2025-11-23 21:05:23,951 [trainer.py] => init_cls: 10
+2025-11-23 21:05:23,951 [trainer.py] => increment: 10
+2025-11-23 21:05:23,951 [trainer.py] => model_name: hideprompt
+2025-11-23 21:05:23,951 [trainer.py] => backbone_type: vit_base_patch16_224_hideprompt
+2025-11-23 21:05:23,951 [trainer.py] => original_model: vit_base_patch16_224
+2025-11-23 21:05:23,951 [trainer.py] => get_original_backbone: True
+2025-11-23 21:05:23,951 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-23 21:05:23,951 [trainer.py] => seed: 1993
+2025-11-23 21:05:23,951 [trainer.py] => tuned_epoch: 50
+2025-11-23 21:05:23,951 [trainer.py] => init_lr: 0.0005
+2025-11-23 21:05:23,951 [trainer.py] => batch_size: 24
+2025-11-23 21:05:23,951 [trainer.py] => weight_decay: 0.0005
+2025-11-23 21:05:23,951 [trainer.py] => min_lr: 1e-05
+2025-11-23 21:05:23,951 [trainer.py] => optimizer: adam
+2025-11-23 21:05:23,951 [trainer.py] => scheduler: step
+2025-11-23 21:05:23,951 [trainer.py] => reinit_optimizer: True
+2025-11-23 21:05:23,951 [trainer.py] => init_milestones: [10]
+2025-11-23 21:05:23,951 [trainer.py] => init_lr_decay: 0.1
+2025-11-23 21:05:23,951 [trainer.py] => global_pool: token
+2025-11-23 21:05:23,951 [trainer.py] => head_type: token
+2025-11-23 21:05:23,951 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2025-11-23 21:05:23,951 [trainer.py] => pretrained: True
+2025-11-23 21:05:23,952 [trainer.py] => drop: 0.0
+2025-11-23 21:05:23,952 [trainer.py] => drop_path: 0.0
+2025-11-23 21:05:23,952 [trainer.py] => use_g_prompt: False
+2025-11-23 21:05:23,952 [trainer.py] => g_prompt_length: 5
+2025-11-23 21:05:23,952 [trainer.py] => g_prompt_layer_idx: []
+2025-11-23 21:05:23,952 [trainer.py] => use_prefix_tune_for_g_prompt: False
+2025-11-23 21:05:23,952 [trainer.py] => use_e_prompt: True
+2025-11-23 21:05:23,952 [trainer.py] => e_prompt_layer_idx: [0, 1, 2, 3, 4]
+2025-11-23 21:05:23,952 [trainer.py] => use_prefix_tune_for_e_prompt: True
+2025-11-23 21:05:23,952 [trainer.py] => prompt_pool: True
+2025-11-23 21:05:23,952 [trainer.py] => size: 10
+2025-11-23 21:05:23,952 [trainer.py] => length: 20
+2025-11-23 21:05:23,952 [trainer.py] => top_k: 1
+2025-11-23 21:05:23,952 [trainer.py] => initializer: uniform
+2025-11-23 21:05:23,952 [trainer.py] => prompt_key: False
+2025-11-23 21:05:23,952 [trainer.py] => prompt_key_init: uniform
+2025-11-23 21:05:23,952 [trainer.py] => use_prompt_mask: True
+2025-11-23 21:05:23,952 [trainer.py] => shared_prompt_pool: True
+2025-11-23 21:05:23,952 [trainer.py] => shared_prompt_key: False
+2025-11-23 21:05:23,952 [trainer.py] => batchwise_prompt: False
+2025-11-23 21:05:23,952 [trainer.py] => embedding_key: cls
+2025-11-23 21:05:23,952 [trainer.py] => predefined_key: 
+2025-11-23 21:05:23,952 [trainer.py] => same_key_value: False
+2025-11-23 21:05:23,952 [trainer.py] => train_mask: True
+2025-11-23 21:05:23,952 [trainer.py] => larger_prompt_lr: True
+2025-11-23 21:05:23,953 [trainer.py] => prompt_momentum: 0.01
+2025-11-23 21:05:23,953 [trainer.py] => reg: 0.1
+2025-11-23 21:05:25,828 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2025-11-23 21:05:28,047 [vit_hideprompt.py] => Loading pretrained weights for vit_base_patch16_224 using timm...
+2025-11-23 21:05:29,183 [_builder.py] => Loading pretrained weights from url (https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz)
+2025-11-23 21:05:29,205 [vit_hideprompt.py] => Failed to load pretrained weights for vit_base_patch16_224: Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)
+Traceback: Traceback (most recent call last):
+  File "/root/PEFT-CL/backbone/vit_hideprompt.py", line 919, in _create_vision_transformer
+    pretrained_model = timm_fn(pretrained=True, num_classes=0)
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 2820, in vit_base_patch16_224
+    model = _create_vision_transformer('vit_base_patch16_224', pretrained=pretrained, **dict(model_args, **kwargs))
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 2720, in _create_vision_transformer
+    return build_model_with_cfg(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/_builder.py", line 457, in build_model_with_cfg
+    load_pretrained(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/_builder.py", line 200, in load_pretrained
+    state_dict = load_state_dict_from_url(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/hub.py", line 875, in load_state_dict_from_url
+    return torch.load(cached_file, map_location=map_location, weights_only=weights_only)
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/serialization.py", line 1491, in load
+    with _open_zipfile_reader(opened_file) as opened_zipfile:
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/serialization.py", line 771, in __init__
+    super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+RuntimeError: Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)
+
+Continuing with randomly initialized weights.
+2025-11-23 21:05:30,385 [vit_hideprompt.py] => Loading pretrained weights for vit_base_patch16_224 using timm...
+2025-11-23 21:05:31,728 [_builder.py] => Loading pretrained weights from url (https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz)
+2025-11-23 21:05:31,730 [vit_hideprompt.py] => Failed to load pretrained weights for vit_base_patch16_224: Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)
+Traceback: Traceback (most recent call last):
+  File "/root/PEFT-CL/backbone/vit_hideprompt.py", line 919, in _create_vision_transformer
+    pretrained_model = timm_fn(pretrained=True, num_classes=0)
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 2820, in vit_base_patch16_224
+    model = _create_vision_transformer('vit_base_patch16_224', pretrained=pretrained, **dict(model_args, **kwargs))
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/vision_transformer.py", line 2720, in _create_vision_transformer
+    return build_model_with_cfg(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/_builder.py", line 457, in build_model_with_cfg
+    load_pretrained(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/timm/models/_builder.py", line 200, in load_pretrained
+    state_dict = load_state_dict_from_url(
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/hub.py", line 875, in load_state_dict_from_url
+    return torch.load(cached_file, map_location=map_location, weights_only=weights_only)
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/serialization.py", line 1491, in load
+    with _open_zipfile_reader(opened_file) as opened_zipfile:
+  File "/root/micromamba/envs/PEFT-CL/lib/python3.9/site-packages/torch/serialization.py", line 771, in __init__
+    super().__init__(torch._C.PyTorchFileReader(name_or_buffer))
+RuntimeError: Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)
+
+Continuing with randomly initialized weights.
+2025-11-23 21:05:31,733 [hideprompt.py] => 87,411,556 model total parameters.
+2025-11-23 21:05:31,734 [hideprompt.py] => 1,612,900 model training parameters.
+2025-11-23 21:05:31,734 [hideprompt.py] => e_prompt.prompt: 1536000
+2025-11-23 21:05:31,734 [hideprompt.py] => head.weight: 76800
+2025-11-23 21:05:31,734 [hideprompt.py] => head.bias: 100
+2025-11-23 21:05:31,764 [trainer.py] => All params: 173287112
+2025-11-23 21:05:31,765 [trainer.py] => Trainable params: 1612900
+2025-11-23 21:05:31,765 [hideprompt.py] => Learning on 0-10
+2025-11-23 21:57:43,586 [hideprompt.py] => Task 0, Epoch 50/50 => Loss 2.038, Train_accy 26.50, Test_accy 29.50
+2025-11-23 21:57:52,897 [trainer.py] => No NME accuracy.
+2025-11-23 21:57:52,899 [trainer.py] => CNN: {'total': np.float64(29.5), '00-09': np.float64(29.5), 'old': 0, 'new': np.float64(29.5)}
+2025-11-23 21:57:52,899 [trainer.py] => CNN top1 curve: [np.float64(29.5)]
+2025-11-23 21:57:52,899 [trainer.py] => CNN top5 curve: [np.float64(80.0)]
+
+2025-11-23 21:57:52,900 [trainer.py] => Average Accuracy (CNN): 29.5 
+
+2025-11-23 21:57:52,902 [trainer.py] => All params: 173287112
+2025-11-23 21:57:52,903 [trainer.py] => Trainable params: 1612900
+2025-11-23 21:57:52,904 [hideprompt.py] => Learning on 10-20
+2025-11-23 22:51:38,596 [hideprompt.py] => Task 1, Epoch 50/50 => Loss 2.039, Train_accy 25.70, Test_accy 13.35
+2025-11-23 22:51:56,688 [trainer.py] => No NME accuracy.
+2025-11-23 22:51:56,690 [trainer.py] => CNN: {'total': np.float64(13.35), '00-09': np.float64(0.0), '10-19': np.float64(26.7), 'old': np.float64(0.0), 'new': np.float64(26.7)}
+2025-11-23 22:51:56,690 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35)]
+2025-11-23 22:51:56,690 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0)]
+
+2025-11-23 22:51:56,692 [trainer.py] => Average Accuracy (CNN): 21.425 
+
+2025-11-23 22:51:56,693 [trainer.py] => All params: 173287112
+2025-11-23 22:51:56,694 [trainer.py] => Trainable params: 1612900
+2025-11-23 22:51:56,694 [hideprompt.py] => Learning on 20-30
+2025-11-23 23:47:25,676 [hideprompt.py] => Task 2, Epoch 50/50 => Loss 1.883, Train_accy 33.24, Test_accy 12.70
+2025-11-23 23:47:52,584 [trainer.py] => No NME accuracy.
+2025-11-23 23:47:52,587 [trainer.py] => CNN: {'total': np.float64(12.7), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(38.1), 'old': np.float64(0.0), 'new': np.float64(38.1)}
+2025-11-23 23:47:52,587 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7)]
+2025-11-23 23:47:52,587 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37)]
+
+2025-11-23 23:47:52,588 [trainer.py] => Average Accuracy (CNN): 18.516666666666666 
+
+2025-11-23 23:47:52,590 [trainer.py] => All params: 173287112
+2025-11-23 23:47:52,591 [trainer.py] => Trainable params: 1612900
+2025-11-23 23:47:52,591 [hideprompt.py] => Learning on 30-40
+2025-11-24 00:45:07,602 [hideprompt.py] => Task 3, Epoch 50/50 => Loss 1.919, Train_accy 31.64, Test_accy 8.32
+2025-11-24 00:45:43,521 [trainer.py] => No NME accuracy.
+2025-11-24 00:45:43,524 [trainer.py] => CNN: {'total': np.float64(8.32), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.2), '30-39': np.float64(33.1), 'old': np.float64(0.07), 'new': np.float64(33.1)}
+2025-11-24 00:45:43,524 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32)]
+2025-11-24 00:45:43,524 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9)]
+
+2025-11-24 00:45:43,525 [trainer.py] => Average Accuracy (CNN): 15.9675 
+
+2025-11-24 00:45:43,527 [trainer.py] => All params: 173287112
+2025-11-24 00:45:43,528 [trainer.py] => Trainable params: 1612900
+2025-11-24 00:45:43,528 [hideprompt.py] => Learning on 40-50
+2025-11-24 01:44:37,019 [hideprompt.py] => Task 4, Epoch 50/50 => Loss 1.970, Train_accy 31.62, Test_accy 6.46
+2025-11-24 01:45:21,788 [trainer.py] => No NME accuracy.
+2025-11-24 01:45:21,791 [trainer.py] => CNN: {'total': np.float64(6.46), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.1), '40-49': np.float64(32.2), 'old': np.float64(0.02), 'new': np.float64(32.2)}
+2025-11-24 01:45:21,791 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46)]
+2025-11-24 01:45:21,792 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92)]
+
+2025-11-24 01:45:21,793 [trainer.py] => Average Accuracy (CNN): 14.065999999999999 
+
+2025-11-24 01:45:21,795 [trainer.py] => All params: 173287112
+2025-11-24 01:45:21,796 [trainer.py] => Trainable params: 1612900
+2025-11-24 01:45:21,796 [hideprompt.py] => Learning on 50-60
+2025-11-24 02:47:56,831 [hideprompt.py] => Task 5, Epoch 50/50 => Loss 1.811, Train_accy 35.30, Test_accy 6.13
+2025-11-24 02:48:51,062 [trainer.py] => No NME accuracy.
+2025-11-24 02:48:51,066 [trainer.py] => CNN: {'total': np.float64(6.13), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(1.1), '50-59': np.float64(35.7), 'old': np.float64(0.22), 'new': np.float64(35.7)}
+2025-11-24 02:48:51,066 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46), np.float64(6.13)]
+2025-11-24 02:48:51,066 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92), np.float64(15.22)]
+
+2025-11-24 02:48:51,069 [trainer.py] => Average Accuracy (CNN): 12.743333333333332 
+
+2025-11-24 02:48:51,070 [trainer.py] => All params: 173287112
+2025-11-24 02:48:51,071 [trainer.py] => Trainable params: 1612900
+2025-11-24 02:48:51,072 [hideprompt.py] => Learning on 60-70
+2025-11-24 03:52:07,784 [hideprompt.py] => Task 6, Epoch 50/50 => Loss 1.903, Train_accy 34.70, Test_accy 5.27
+2025-11-24 03:53:10,244 [trainer.py] => No NME accuracy.
+2025-11-24 03:53:10,260 [trainer.py] => CNN: {'total': np.float64(5.27), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.1), '50-59': np.float64(0.0), '60-69': np.float64(36.8), 'old': np.float64(0.02), 'new': np.float64(36.8)}
+2025-11-24 03:53:10,261 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46), np.float64(6.13), np.float64(5.27)]
+2025-11-24 03:53:10,261 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92), np.float64(15.22), np.float64(12.87)]
+
+2025-11-24 03:53:10,263 [trainer.py] => Average Accuracy (CNN): 11.675714285714283 
+
+2025-11-24 03:53:10,265 [trainer.py] => All params: 173287112
+2025-11-24 03:53:10,266 [trainer.py] => Trainable params: 1612900
+2025-11-24 03:53:10,267 [hideprompt.py] => Learning on 70-80
+2025-11-24 04:56:53,311 [hideprompt.py] => Task 7, Epoch 50/50 => Loss 1.805, Train_accy 36.50, Test_accy 5.20
+2025-11-24 04:58:04,997 [trainer.py] => No NME accuracy.
+2025-11-24 04:58:05,001 [trainer.py] => CNN: {'total': np.float64(5.2), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(1.3), '70-79': np.float64(40.3), 'old': np.float64(0.19), 'new': np.float64(40.3)}
+2025-11-24 04:58:05,001 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46), np.float64(6.13), np.float64(5.27), np.float64(5.2)]
+2025-11-24 04:58:05,001 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92), np.float64(15.22), np.float64(12.87), np.float64(11.25)]
+
+2025-11-24 04:58:05,003 [trainer.py] => Average Accuracy (CNN): 10.866249999999999 
+
+2025-11-24 04:58:05,004 [trainer.py] => All params: 173287112
+2025-11-24 04:58:05,005 [trainer.py] => Trainable params: 1612900
+2025-11-24 04:58:05,005 [hideprompt.py] => Learning on 80-90
+2025-11-24 06:03:25,758 [hideprompt.py] => Task 8, Epoch 50/50 => Loss 1.880, Train_accy 33.46, Test_accy 3.90
+2025-11-24 06:04:45,501 [trainer.py] => No NME accuracy.
+2025-11-24 06:04:45,506 [trainer.py] => CNN: {'total': np.float64(3.9), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.0), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(0.0), '70-79': np.float64(0.1), '80-89': np.float64(35.0), 'old': np.float64(0.01), 'new': np.float64(35.0)}
+2025-11-24 06:04:45,507 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46), np.float64(6.13), np.float64(5.27), np.float64(5.2), np.float64(3.9)]
+2025-11-24 06:04:45,507 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92), np.float64(15.22), np.float64(12.87), np.float64(11.25), np.float64(9.74)]
+
+2025-11-24 06:04:45,509 [trainer.py] => Average Accuracy (CNN): 10.092222222222222 
+
+2025-11-24 06:04:45,510 [trainer.py] => All params: 173287112
+2025-11-24 06:04:45,511 [trainer.py] => Trainable params: 1612900
+2025-11-24 06:04:45,511 [hideprompt.py] => Learning on 90-100
+2025-11-24 07:10:33,388 [hideprompt.py] => Task 9, Epoch 50/50 => Loss 1.767, Train_accy 40.32, Test_accy 3.77
+2025-11-24 07:12:01,819 [trainer.py] => No NME accuracy.
+2025-11-24 07:12:01,822 [trainer.py] => CNN: {'total': np.float64(3.77), '00-09': np.float64(0.0), '10-19': np.float64(0.0), '20-29': np.float64(0.0), '30-39': np.float64(0.1), '40-49': np.float64(0.0), '50-59': np.float64(0.0), '60-69': np.float64(0.0), '70-79': np.float64(0.0), '80-89': np.float64(0.1), '90-99': np.float64(37.5), 'old': np.float64(0.02), 'new': np.float64(37.5)}
+2025-11-24 07:12:01,822 [trainer.py] => CNN top1 curve: [np.float64(29.5), np.float64(13.35), np.float64(12.7), np.float64(8.32), np.float64(6.46), np.float64(6.13), np.float64(5.27), np.float64(5.2), np.float64(3.9), np.float64(3.77)]
+2025-11-24 07:12:01,822 [trainer.py] => CNN top5 curve: [np.float64(80.0), np.float64(39.0), np.float64(29.37), np.float64(23.9), np.float64(17.92), np.float64(15.22), np.float64(12.87), np.float64(11.25), np.float64(9.74), np.float64(9.08)]
+
+2025-11-24 07:12:01,823 [trainer.py] => Average Accuracy (CNN): 9.459999999999999 
+
+2025-11-27 05:48:30,697 [trainer.py] => config: exps/hideprompt_c100.json
+2025-11-27 05:48:30,699 [trainer.py] => prefix: reproduce
+2025-11-27 05:48:30,699 [trainer.py] => dataset: cifar224
+2025-11-27 05:48:30,699 [trainer.py] => memory_size: 0
+2025-11-27 05:48:30,699 [trainer.py] => memory_per_class: 0
+2025-11-27 05:48:30,699 [trainer.py] => fixed_memory: False
+2025-11-27 05:48:30,699 [trainer.py] => shuffle: True
+2025-11-27 05:48:30,699 [trainer.py] => init_cls: 10
+2025-11-27 05:48:30,699 [trainer.py] => increment: 10
+2025-11-27 05:48:30,699 [trainer.py] => model_name: hideprompt
+2025-11-27 05:48:30,699 [trainer.py] => backbone_type: vit_base_patch16_224_hideprompt
+2025-11-27 05:48:30,699 [trainer.py] => original_model: vit_base_patch16_224
+2025-11-27 05:48:30,699 [trainer.py] => get_original_backbone: True
+2025-11-27 05:48:30,699 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-27 05:48:30,699 [trainer.py] => seed: 1993
+2025-11-27 05:48:30,699 [trainer.py] => tuned_epoch: 50
+2025-11-27 05:48:30,699 [trainer.py] => init_lr: 0.0005
+2025-11-27 05:48:30,699 [trainer.py] => batch_size: 24
+2025-11-27 05:48:30,700 [trainer.py] => weight_decay: 0.0005
+2025-11-27 05:48:30,700 [trainer.py] => min_lr: 1e-05
+2025-11-27 05:48:30,700 [trainer.py] => optimizer: adam
+2025-11-27 05:48:30,700 [trainer.py] => scheduler: step
+2025-11-27 05:48:30,700 [trainer.py] => reinit_optimizer: True
+2025-11-27 05:48:30,700 [trainer.py] => init_milestones: [10]
+2025-11-27 05:48:30,700 [trainer.py] => init_lr_decay: 0.1
+2025-11-27 05:48:30,700 [trainer.py] => global_pool: token
+2025-11-27 05:48:30,700 [trainer.py] => head_type: token
+2025-11-27 05:48:30,700 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2025-11-27 05:48:30,700 [trainer.py] => pretrained: True
+2025-11-27 05:48:30,700 [trainer.py] => drop: 0.0
+2025-11-27 05:48:30,700 [trainer.py] => drop_path: 0.0
+2025-11-27 05:48:30,700 [trainer.py] => use_g_prompt: False
+2025-11-27 05:48:30,700 [trainer.py] => g_prompt_length: 5
+2025-11-27 05:48:30,700 [trainer.py] => g_prompt_layer_idx: []
+2025-11-27 05:48:30,700 [trainer.py] => use_prefix_tune_for_g_prompt: False
+2025-11-27 05:48:30,700 [trainer.py] => use_e_prompt: True
+2025-11-27 05:48:30,700 [trainer.py] => e_prompt_layer_idx: [0, 1, 2, 3, 4]
+2025-11-27 05:48:30,700 [trainer.py] => use_prefix_tune_for_e_prompt: True
+2025-11-27 05:48:30,700 [trainer.py] => prompt_pool: True
+2025-11-27 05:48:30,700 [trainer.py] => size: 10
+2025-11-27 05:48:30,700 [trainer.py] => length: 20
+2025-11-27 05:48:30,700 [trainer.py] => top_k: 1
+2025-11-27 05:48:30,701 [trainer.py] => initializer: uniform
+2025-11-27 05:48:30,701 [trainer.py] => prompt_key: False
+2025-11-27 05:48:30,701 [trainer.py] => prompt_key_init: uniform
+2025-11-27 05:48:30,701 [trainer.py] => use_prompt_mask: True
+2025-11-27 05:48:30,701 [trainer.py] => shared_prompt_pool: True
+2025-11-27 05:48:30,701 [trainer.py] => shared_prompt_key: False
+2025-11-27 05:48:30,701 [trainer.py] => batchwise_prompt: False
+2025-11-27 05:48:30,701 [trainer.py] => embedding_key: cls
+2025-11-27 05:48:30,701 [trainer.py] => predefined_key: 
+2025-11-27 05:48:30,701 [trainer.py] => same_key_value: False
+2025-11-27 05:48:30,701 [trainer.py] => train_mask: True
+2025-11-27 05:48:30,701 [trainer.py] => larger_prompt_lr: True
+2025-11-27 05:48:30,701 [trainer.py] => prompt_momentum: 0.01
+2025-11-27 05:48:30,701 [trainer.py] => reg: 0.1
+2025-11-27 05:48:33,257 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2025-11-27 05:48:35,530 [_builder.py] => Loading pretrained weights from url (https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz)
+2025-11-27 05:48:35,550 [vit_hideprompt.py] => Pretrained npz load failed for vit_base_patch16_224 (Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)); retrying without pretrained weights.
+2025-11-27 05:48:37,535 [_builder.py] => Loading pretrained weights from url (https://storage.googleapis.com/vit_models/imagenet21k/ViT-B_16.npz)
+2025-11-27 05:48:37,537 [vit_hideprompt.py] => Pretrained npz load failed for vit_base_patch16_224 (Expected hasRecord("version") to be true, but got false.  (Could this error message be improved?  If so, please report an enhancement request to PyTorch.)); retrying without pretrained weights.
+2025-11-27 05:48:38,640 [hideprompt.py] => 87,411,556 model total parameters.
+2025-11-27 05:48:38,641 [hideprompt.py] => 1,612,900 model training parameters.
+2025-11-27 05:48:38,641 [hideprompt.py] => e_prompt.prompt: 1536000
+2025-11-27 05:48:38,641 [hideprompt.py] => head.weight: 76800
+2025-11-27 05:48:38,641 [hideprompt.py] => head.bias: 100
+2025-11-27 05:48:38,642 [trainer.py] => All params: 173287112
+2025-11-27 05:48:38,643 [trainer.py] => Trainable params: 1612900
+2025-11-27 05:48:38,643 [hideprompt.py] => Learning on 0-10
+2025-11-27 05:57:38,321 [trainer.py] => config: exps/hideprompt_c100.json
+2025-11-27 05:57:38,324 [trainer.py] => prefix: reproduce
+2025-11-27 05:57:38,324 [trainer.py] => dataset: cifar224
+2025-11-27 05:57:38,324 [trainer.py] => memory_size: 0
+2025-11-27 05:57:38,324 [trainer.py] => memory_per_class: 0
+2025-11-27 05:57:38,324 [trainer.py] => fixed_memory: False
+2025-11-27 05:57:38,324 [trainer.py] => shuffle: True
+2025-11-27 05:57:38,328 [trainer.py] => init_cls: 10
+2025-11-27 05:57:38,328 [trainer.py] => increment: 10
+2025-11-27 05:57:38,328 [trainer.py] => model_name: hideprompt
+2025-11-27 05:57:38,328 [trainer.py] => backbone_type: vit_base_patch16_224_hideprompt
+2025-11-27 05:57:38,328 [trainer.py] => original_model: vit_base_patch16_224
+2025-11-27 05:57:38,328 [trainer.py] => get_original_backbone: True
+2025-11-27 05:57:38,328 [trainer.py] => device: [device(type='cuda', index=0)]
+2025-11-27 05:57:38,328 [trainer.py] => seed: 1993
+2025-11-27 05:57:38,328 [trainer.py] => tuned_epoch: 50
+2025-11-27 05:57:38,329 [trainer.py] => init_lr: 0.0005
+2025-11-27 05:57:38,329 [trainer.py] => batch_size: 24
+2025-11-27 05:57:38,329 [trainer.py] => weight_decay: 0.0005
+2025-11-27 05:57:38,329 [trainer.py] => min_lr: 1e-05
+2025-11-27 05:57:38,329 [trainer.py] => optimizer: adam
+2025-11-27 05:57:38,329 [trainer.py] => scheduler: step
+2025-11-27 05:57:38,329 [trainer.py] => reinit_optimizer: True
+2025-11-27 05:57:38,329 [trainer.py] => init_milestones: [10]
+2025-11-27 05:57:38,329 [trainer.py] => init_lr_decay: 0.1
+2025-11-27 05:57:38,329 [trainer.py] => global_pool: token
+2025-11-27 05:57:38,329 [trainer.py] => head_type: token
+2025-11-27 05:57:38,329 [trainer.py] => freeze: ['blocks', 'patch_embed', 'cls_token', 'norm', 'pos_embed']
+2025-11-27 05:57:38,329 [trainer.py] => pretrained: True
+2025-11-27 05:57:38,329 [trainer.py] => drop: 0.0
+2025-11-27 05:57:38,329 [trainer.py] => drop_path: 0.0
+2025-11-27 05:57:38,329 [trainer.py] => use_g_prompt: False
+2025-11-27 05:57:38,329 [trainer.py] => g_prompt_length: 5
+2025-11-27 05:57:38,329 [trainer.py] => g_prompt_layer_idx: []
+2025-11-27 05:57:38,329 [trainer.py] => use_prefix_tune_for_g_prompt: False
+2025-11-27 05:57:38,329 [trainer.py] => use_e_prompt: True
+2025-11-27 05:57:38,329 [trainer.py] => e_prompt_layer_idx: [0, 1, 2, 3, 4]
+2025-11-27 05:57:38,329 [trainer.py] => use_prefix_tune_for_e_prompt: True
+2025-11-27 05:57:38,329 [trainer.py] => prompt_pool: True
+2025-11-27 05:57:38,330 [trainer.py] => size: 10
+2025-11-27 05:57:38,330 [trainer.py] => length: 20
+2025-11-27 05:57:38,330 [trainer.py] => top_k: 1
+2025-11-27 05:57:38,330 [trainer.py] => initializer: uniform
+2025-11-27 05:57:38,330 [trainer.py] => prompt_key: False
+2025-11-27 05:57:38,330 [trainer.py] => prompt_key_init: uniform
+2025-11-27 05:57:38,330 [trainer.py] => use_prompt_mask: True
+2025-11-27 05:57:38,330 [trainer.py] => shared_prompt_pool: True
+2025-11-27 05:57:38,330 [trainer.py] => shared_prompt_key: False
+2025-11-27 05:57:38,330 [trainer.py] => batchwise_prompt: False
+2025-11-27 05:57:38,330 [trainer.py] => embedding_key: cls
+2025-11-27 05:57:38,330 [trainer.py] => predefined_key: 
+2025-11-27 05:57:38,330 [trainer.py] => same_key_value: False
+2025-11-27 05:57:38,330 [trainer.py] => train_mask: True
+2025-11-27 05:57:38,330 [trainer.py] => larger_prompt_lr: True
+2025-11-27 05:57:38,331 [trainer.py] => prompt_momentum: 0.01
+2025-11-27 05:57:38,331 [trainer.py] => reg: 0.1
+2025-11-27 05:57:40,139 [data_manager.py] => [68, 56, 78, 8, 23, 84, 90, 65, 74, 76, 40, 89, 3, 92, 55, 9, 26, 80, 43, 38, 58, 70, 77, 1, 85, 19, 17, 50, 28, 53, 13, 81, 45, 82, 6, 59, 83, 16, 15, 44, 91, 41, 72, 60, 79, 52, 20, 10, 31, 54, 37, 95, 14, 71, 96, 98, 97, 2, 64, 66, 42, 22, 35, 86, 24, 34, 87, 21, 99, 0, 88, 27, 18, 94, 11, 12, 47, 25, 30, 46, 62, 69, 36, 61, 7, 63, 75, 5, 32, 4, 51, 48, 73, 93, 39, 67, 29, 49, 57, 33]
+2025-11-27 05:57:42,558 [vit_hideprompt.py] => Successfully loaded pretrained NPZ weights for vit_base_patch16_224 from /root/.cache/torch/hub/checkpoints/ViT-B_16.npz
+2025-11-27 05:57:44,176 [vit_hideprompt.py] => Successfully loaded pretrained NPZ weights for vit_base_patch16_224 from /root/.cache/torch/hub/checkpoints/ViT-B_16.npz
+2025-11-27 05:57:44,179 [hideprompt.py] => 87,411,556 model total parameters.
+2025-11-27 05:57:44,179 [hideprompt.py] => 1,612,900 model training parameters.
+2025-11-27 05:57:44,180 [hideprompt.py] => e_prompt.prompt: 1536000
+2025-11-27 05:57:44,180 [hideprompt.py] => head.weight: 76800
+2025-11-27 05:57:44,180 [hideprompt.py] => head.bias: 100
+2025-11-27 05:57:44,181 [trainer.py] => All params: 173287112
+2025-11-27 05:57:44,182 [trainer.py] => Trainable params: 1612900
+2025-11-27 05:57:44,182 [hideprompt.py] => Learning on 0-10
