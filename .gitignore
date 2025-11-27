@@ -208,3 +208,6 @@ __marimo__/
 
 /data
 /checkpoints
+# Ensure training logs are tracked but backups stay local
+logs.bak/
+!logs/
