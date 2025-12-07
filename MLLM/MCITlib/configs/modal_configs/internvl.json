@@ -1,0 +1,6 @@
+{
+  "model_name": "/root/.cache/VLMs/Internvl-chat-7b",
+  "mm_projector": "/root/.cache/VLMs/Internvl-chat-7b/mm_projector.bin",
+  "vision_tower": "/root/.cache/VLMs/InternViT-6B-224px",
+  "clip_tower": "/root/.cache/VLMs/clip-vit-large-patch14-336"
+}

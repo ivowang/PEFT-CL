@@ -1,0 +1,11 @@
+{
+  "gpu_num": 2,
+  "output_dir": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-ACL/LLaVA-1.5/ModalPrompt/Task1_llava",
+  "prefix_len": 20,
+  "num_tasks": 4,
+  "cur_task": 1,
+  "epoch": 3,
+  "batch_size": 4,
+  "grad_acc": 2,
+  "lr": 2e-4
+}

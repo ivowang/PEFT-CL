@@ -1,0 +1,6 @@
+{
+  "gpu_num": 2,
+  "stage": "MoELoRA-task2",
+  "model_path": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-DCL/LLaVA-1.5/MoELoRA/Task2_llava_lora",
+  "result_path": "./results/DCL/each_dataset"
+}

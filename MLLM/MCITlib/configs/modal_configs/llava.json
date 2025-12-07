@@ -1,0 +1,5 @@
+{
+  "model_name": "/root/.cache/VLMs/llava-v1.5-7b",
+  "mm_projector": "/root/.cache/VLMs/llava-v1.5-7b/mm_projector.bin",
+  "vision_tower": "/root/.cache/VLMs/clip-vit-large-patch14-336"
+}

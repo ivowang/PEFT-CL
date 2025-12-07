@@ -1,0 +1,13 @@
+{
+  "key_id": 4,
+  "key_path": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/SEFE",
+  "base_model": "llava",
+  "gpu_num": 2,
+  "rank": 16,
+  "previous_model": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/SEFE/Task5_llava_lora_merged",
+  "output_dir": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/SEFE/Task6_llava_lora",
+  "epoch": 1,
+  "batch_size": 16,
+  "grad_acc": 2,
+  "lr": 2e-4
+}

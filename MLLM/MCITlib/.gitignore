@@ -1,0 +1,12 @@
+# Python
+__pycache__
+*.pyc
+*.egg-info
+
+# Log
+*.log
+*.log.*
+
+# Other
+.DS_Store
+results

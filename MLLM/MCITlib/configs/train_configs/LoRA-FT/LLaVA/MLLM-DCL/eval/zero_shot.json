@@ -1,0 +1,6 @@
+{
+  "gpu_num": 2,
+  "stage": "zero-shot",
+  "model_path": "/root/.cache/VLMs/llava-v1.5-7b",
+  "result_path": "./results/DCL/each_dataset"
+}

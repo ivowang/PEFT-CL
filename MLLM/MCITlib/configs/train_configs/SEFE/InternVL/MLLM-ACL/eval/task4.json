@@ -1,0 +1,6 @@
+{
+  "gpu_num": 2,
+  "stage": "SEFE-task4",
+  "model_path": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-ACL/InternVL/SEFE/Task4_internvl_lora_merged",
+  "result_path": "./results/ACL/each_dataset"
+}

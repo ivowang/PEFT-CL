@@ -1,0 +1,6 @@
+{
+  "gpu_num": 2,
+  "stage": "OLoRA-task1",
+  "model_path": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/OLoRA/Task1_llava_lora",
+  "result_path": "./results/UCIT/each_dataset"
+}

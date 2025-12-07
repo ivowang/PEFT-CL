@@ -1,0 +1,6 @@
+{
+  "train_path": "/root/.cache/datasets/MCITlib/MLLM-CL/OCR/train.json",
+  "test_path": "/root/.cache/datasets/MCITlib/MLLM-CL/OCR_test/test.json",
+  "train_folder": "/root/.cache/datasets/MCITlib/MLLM-CL/OCR",
+  "test_folder": "/root/.cache/datasets/MCITlib/MLLM-CL/OCR_test"
+}

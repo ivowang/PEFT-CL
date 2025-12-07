@@ -1,0 +1,12 @@
+{
+  "gpu_num": 2,
+  "rank": 96,
+  "expert_num": 6,
+  "previous_model": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/DISCO/Task5_llava_lora",
+  "output_dir": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/UCIT/LLaVA-1.5/DISCO/Task6_llava_lora",
+  "epoch": 1,
+  "batch_size": 16,
+  "grad_acc": 2,
+  "lr": 2e-4,
+  "cur_task": 5
+}

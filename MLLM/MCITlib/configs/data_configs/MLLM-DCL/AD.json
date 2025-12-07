@@ -1,0 +1,6 @@
+{
+  "train_path": "/root/.cache/datasets/MCITlib/MLLM-CL/AD/train.json",
+  "test_path": "/root/.cache/datasets/MCITlib/MLLM-CL/AD/test.json",
+  "train_folder": "/root/.cache/datasets/MCITlib/MLLM-CL/AD",
+  "test_folder": "/root/.cache/datasets/MCITlib/MLLM-CL/AD"
+}

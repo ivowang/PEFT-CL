@@ -1,0 +1,14 @@
+{
+  "key_id": 1,
+  "key_path": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-DCL/InternVL/SEFE",
+  "base_model": "internvl",
+  "gpu_num": 2,
+  "rank": 32,
+  "previous_model": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-DCL/InternVL/SEFE/Task2_internvl_lora_merged",
+  "mm_projector": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-DCL/InternVL/SEFE/Task2_internvl_lora/non_lora_trainables.bin",
+  "output_dir": "/root/PEFT-CL/MLLM/MCITlib/checkpoint/MLLM-DCL/InternVL/SEFE/Task3_internvl_lora",
+  "epoch": 1,
+  "batch_size": 4,
+  "grad_acc": 2,
+  "lr": 1e-4
+}
